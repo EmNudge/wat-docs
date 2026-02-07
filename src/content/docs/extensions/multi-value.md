@@ -8,8 +8,8 @@ description: 'Functions and blocks can produce multiple results; blocks can take
 ```wat
 (module
   (func (export "pair") (param $x i32) (result i32 i32)
-    local.get $x
-    i32.const 1)
+    (local.get $x)
+    (i32.const 1))
 )
 ```
 
@@ -18,19 +18,14 @@ description: 'Functions and blocks can produce multiple results; blocks can take
 ```wat
 (module
   (func (param $a i32) (param $b i32) (result i32)
-    local.get $a
-    local.get $b
+    (local.get $a)
+    (local.get $b)
     (block (param i32 i32) (result i32)
-      ;; stack has: a b
-      i32.add            ;; consume both, push sum
-    )
-  )
+      (i32.add)))
 )
 ```
 
-References:
+## Instruction Reference
 
-- [Module Structure](/instructions/module) - `func`, `param`, `result`
-- [Control Flow Instructions](/instructions/control) - `block`, `loop`, `if` with multiple results
-- Spec: https://webassembly.github.io/spec/core/syntax/index.html
-- Practice: multi-result functions in https://github.com/EmNudge/watlings
+- [Module Structure](/instructions/module) — `func`, `param`, `result`
+- [Control Flow Instructions](/instructions/control) — `block`, `loop`, `if` with multiple results

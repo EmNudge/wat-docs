@@ -3,21 +3,19 @@ title: Types
 description: Understand WAT value types, function signatures, locals, and results.
 ---
 
-WAT’s type system is intentionally small. Most modules only need a handful of core types.
+WAT's type system is intentionally small. Most modules only need a handful of core types.
 
 ## Value types
 
 Number types:
 
-- `i32` and `i64`: 32-bit and 64-bit integers (signed/unsigned use the same type; the operator determines interpretation).
+- `i32` and `i64`: 32-bit and 64-bit integers. Signed/unsigned use the same type — the operator determines interpretation.
 - `f32` and `f64`: 32-bit and 64-bit IEEE 754 floats.
 
-Reference types (host references and function references):
+Reference types:
 
 - `funcref`: reference to a function.
-- `externref`: an opaque reference to a host value (e.g., a JS object).
-
-The spec tracks these in “Value Types” and “Reference Types.” See: [WebAssembly spec — Structure → Types](https://webassembly.github.io/spec/core/syntax/index.html).
+- `externref`: opaque reference to a host value (e.g. a JS object).
 
 ## Function types
 
@@ -25,58 +23,39 @@ Functions declare parameter and result types. You can name parameters for readab
 
 ```wat
 (module
-  ;; (func (param <types>...) (result <types>...)? ...)
-
-  (func $add_i32 (param $a i32) (param $b i32) (result i32)
-    local.get $a
-    local.get $b
-    i32.add)
+  (func $add (param $a i32) (param $b i32) (result i32)
+    (i32.add (local.get $a) (local.get $b)))
 
   (func $mix (param $x i64) (param $y f32) (result f64)
-    (local $acc f64)
-    f64.const 0
-    local.set $acc
-    local.get $acc
-    f64.convert_i64_s   ;; convert i64 -> f64
-    local.get $y
-    f64.promote_f32     ;; convert f32 -> f64
-    f64.add)
+    (f64.add
+      (f64.convert_i64_s (local.get $x))
+      (f64.promote_f32 (local.get $y))))
 )
 ```
 
-Notes:
-
 - Multiple results are supported: `(result i32 i64)` pushes two values.
-- Use `local` to declare function-local variables. They must have a type.
+- Use `local` to declare function-local variables: `(local $acc f64)`.
 
 ## Blocks and block types
 
-Control blocks (`block`, `loop`, `if`) can also declare result types, which affect the stack typing.
+Control blocks (`block`, `loop`, `if`) can declare result types, which affect stack typing.
 
 ```wat
 (module
   (func (param $n i32) (result i32)
-    (block (result i32)
-      local.get $n
-      i32.const 0
-      i32.eq
-      if (result i32)
-        i32.const 42     ;; if-branch result
-      else
-        i32.const 7      ;; else-branch result
-      end
-    )
-  )
+    (if (result i32) (i32.eqz (local.get $n))
+      (then (i32.const 42))
+      (else (i32.const 7))))
 )
 ```
 
 Both branches of an `if` with a result must produce the same typed value(s).
 
-## Tables, memories, and globals (types overview)
+## Tables, memories, and globals
 
-- Tables: `funcref` or `externref` elements. Declared with limits, e.g., `(table 1 funcref)` or `(table 1 10 funcref)`.
-- Memories: linear memory of bytes; typed by page limits (64 KiB per page), e.g., `(memory 1)` or `(memory 1 4)`.
-- Globals: typed, optionally mutable values, e.g., `(global (mut i32) (i32.const 0))`.
+- **Tables**: `funcref` or `externref` elements with limits, e.g. `(table 1 funcref)` or `(table 1 10 funcref)`.
+- **Memories**: linear byte arrays sized in 64 KiB pages, e.g. `(memory 1)` or `(memory 1 4)`.
+- **Globals**: typed, optionally mutable values, e.g. `(global (mut i32) (i32.const 0))`.
 
 ```wat
 (module
@@ -86,15 +65,7 @@ Both branches of an `if` with a result must produce the same typed value(s).
 )
 ```
 
-For the formal grammar of all types, see the [WebAssembly spec — Structure → Types](https://webassembly.github.io/spec/core/syntax/index.html).
-
 ## Instruction Reference
 
-For detailed documentation of all type-related constructs:
-
-- [Type Names](/instructions/types) - All value type keywords (`i32`, `i64`, `f32`, `f64`, `v128`, `funcref`, `externref`, etc.)
-- [Module Structure](/instructions/module) - `func`, `param`, `result`, `local`, `global`, `table`, `memory`
-
-## Practice
-
-If you learn best by doing, try the small, focused exercises in [watlings](https://github.com/EmNudge/watlings) and come back to this page as a quick reference.
+- [Type Names](/instructions/types) — all value type keywords
+- [Module Structure](/instructions/module) — `func`, `param`, `result`, `local`, `global`, `table`, `memory`

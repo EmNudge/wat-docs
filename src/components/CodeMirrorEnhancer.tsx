@@ -464,12 +464,15 @@ function shouldShowDiagnostics(): boolean {
   return !path.includes('/instructions/');
 }
 
-async function enhanceCodeBlock(wrapper: HTMLElement) {
-  if (wrapper.dataset.cmEnhanced) return;
-  wrapper.dataset.cmEnhanced = 'true';
+async function enhanceCodeBlock(pre: HTMLElement) {
+  const figure = pre.closest('figure');
+  const target = figure || pre;
 
-  // Extract code from ec-line divs
-  const lines = wrapper.querySelectorAll('.ec-line');
+  if (target.dataset.cmEnhanced) return;
+  target.dataset.cmEnhanced = 'true';
+
+  // Extract code from this specific pre's ec-line divs
+  const lines = pre.querySelectorAll('.ec-line');
   let code = '';
 
   if (lines.length > 0) {
@@ -477,7 +480,7 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
       .map((line) => (line.textContent || '').replace(/^\n+|\n+$/g, ''))
       .join('\n');
   } else {
-    const codeEl = wrapper.querySelector('code');
+    const codeEl = pre.querySelector('code');
     code = codeEl?.textContent || '';
   }
 
@@ -494,8 +497,9 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
     margin-block: 1rem;
   `;
 
-  // Replace the wrapper
-  wrapper.replaceWith(container);
+  // Replace only the figure, not the entire .expressive-code wrapper
+  // (the wrapper may contain sibling figures for other languages)
+  target.replaceWith(container);
 
   // Build extensions list
   const extensions = [
@@ -538,10 +542,7 @@ async function enhanceAllWatBlocks() {
   const pres = document.querySelectorAll('pre[data-language="wat"], pre[data-language="wast"]');
 
   for (const pre of pres) {
-    const wrapper = pre.closest('.expressive-code');
-    if (wrapper && !wrapper.hasAttribute('data-cm-enhanced')) {
-      await enhanceCodeBlock(wrapper as HTMLElement);
-    }
+    await enhanceCodeBlock(pre as HTMLElement);
   }
 }
 

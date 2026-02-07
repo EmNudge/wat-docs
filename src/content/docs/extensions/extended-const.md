@@ -19,17 +19,16 @@ Extended const expressions allow more forms in places that require constants, li
 ```wat
 (module
   (type $t0 (func (param i32) (result i32)))
-  (func $id (type $t0) (param $x i32) (result i32) local.get $x)
+  (func $id (type $t0) (param $x i32) (result i32)
+    (local.get $x))
 
   (table 2 funcref)
   (elem (i32.const 0) func $id)
 )
 ```
 
-References:
+## Instruction Reference
 
-- [Local & Global Instructions](/instructions/local-global) - `global.get`
-- [Reference Instructions](/instructions/reference) - `ref.func`, `ref.null`
-- [Module Structure](/instructions/module) - `global`, `elem`, `data`
-- Spec (syntax): https://webassembly.github.io/spec/core/syntax/index.html
-- Practice: globals/tables in https://github.com/EmNudge/watlings
+- [Local & Global Instructions](/instructions/local-global) — `global.get`
+- [Reference Instructions](/instructions/reference) — `ref.func`, `ref.null`
+- [Module Structure](/instructions/module) — `global`, `elem`, `data`

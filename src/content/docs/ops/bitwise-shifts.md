@@ -8,28 +8,23 @@ Bitwise ops are for integers only.
 ```wat
 (module
   (func (export "bits") (param $x i32) (param $y i32) (result i32)
-    local.get $x
-    local.get $y
-    i32.and)                ;; i32.or, i32.xor
+    (i32.and (local.get $x) (local.get $y)))
 )
 ```
 
-Shifts/rotates:
+Also: `i32.or`, `i32.xor`.
+
+Shifts and rotates:
 
 ```wat
 (module
   (func (export "shifts") (param $x i32) (param $amt i32) (result i32)
-    local.get $x
-    local.get $amt
-    i32.shl)                ;; i32.shr_s, i32.shr_u, i32.rotl, i32.rotr
+    (i32.shl (local.get $x) (local.get $amt)))
 )
 ```
 
-Also available for `i64.*`.
+Also: `i32.shr_s`, `i32.shr_u`, `i32.rotl`, `i32.rotr` and all `i64.*` variants.
 
-Reference:
+## Instruction Reference
 
-- [i32 Instructions](/instructions/i32) - Complete i32 instruction reference
-- [i64 Instructions](/instructions/i64) - Complete i64 instruction reference
-- Spec: https://webassembly.github.io/spec/core/syntax/index.html
-- Practice: bitwise tasks in https://github.com/EmNudge/watlings
+- [i32 Instructions](/instructions/i32), [i64 Instructions](/instructions/i64)
