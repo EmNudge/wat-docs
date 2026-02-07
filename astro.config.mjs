@@ -86,6 +86,7 @@ export default defineConfig({
             { label: 'Garbage Collection (WasmGC)', slug: 'extensions/wasm-gc' },
             { label: 'Multi-value', slug: 'extensions/multi-value' },
             { label: 'Import/Export Mutable Globals', slug: 'extensions/mutable-globals' },
+            { label: 'Memory64', slug: 'extensions/memory64' },
             { label: 'Reference Types', slug: 'extensions/reference-types' },
             { label: 'Non-trapping Float→Int', slug: 'extensions/nontrapping-f2i' },
             { label: 'Sign-extension Ops', slug: 'extensions/sign-extension' },
