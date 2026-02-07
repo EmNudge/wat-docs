@@ -3,26 +3,18 @@ title: drop
 description: Discard the top-of-stack value.
 ---
 
-`drop` removes the top value from the stack. It’s handy when an intermediate result is not needed.
+`drop` removes the top value from the stack.
 
 ```wat
 (module
   (func (result i32)
-    i32.const 10
-    i32.const 20
-    drop           ;; drops 20
-    ;; stack: [10]
-  )
+    (drop (i32.const 20))
+    (i32.const 10))
 )
 ```
 
-Tips:
+Use `drop` to balance unwanted values — for example, when an instruction pushes a result you don't need.
 
-- Keep an eye on stack discipline. `drop` is the simplest way to balance unwanted values.
-- Combine with `block (result ...)` to ensure correct outputs from structured constructs.
+## Instruction Reference
 
-References:
-
-- [Parametric Instructions](/instructions/parametric) - Complete reference for `drop`, `select`
-- Spec: [Parametric instructions — drop](https://webassembly.github.io/spec/core/syntax/index.html)
-- Practice: stack exercises in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
+- [Parametric Instructions](/instructions/parametric) — `drop`, `select`

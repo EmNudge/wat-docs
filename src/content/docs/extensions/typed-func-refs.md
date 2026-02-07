@@ -9,24 +9,17 @@ Typed function references make function refs carry specific types and enable `ca
 (module
   (type $t0 (func (param i32) (result i32)))
   (func $inc (type $t0) (param $x i32) (result i32)
-    local.get $x
-    i32.const 1
-    i32.add)
+    (i32.add (local.get $x) (i32.const 1)))
+
   (table 1 funcref)
   (elem (i32.const 0) $inc)
 
-  (func (export "dispatch") (param $i i32) (param $x i32) (result i32)
-    local.get $i
-    ref.func $inc
-    drop                  ;; example only; normally fetch from table
-    local.get $x
-    call_ref (type $t0))
+  (func (export "dispatch") (param $x i32) (result i32)
+    (call_ref (type $t0) (local.get $x) (ref.func $inc)))
 )
 ```
 
-References:
+## Instruction Reference
 
-- [Control Flow Instructions](/instructions/control) - `call_ref`, `return_call_ref`, `br_on_null`, `br_on_non_null`
-- [Reference Instructions](/instructions/reference) - `ref.func`, `ref.null`, `ref.is_null`, `ref.as_non_null`
-- Spec: https://webassembly.github.io/spec/core/syntax/index.html
-- Practice: dispatch patterns in https://github.com/EmNudge/watlings
+- [Control Flow Instructions](/instructions/control) — `call_ref`, `return_call_ref`, `br_on_null`, `br_on_non_null`
+- [Reference Instructions](/instructions/reference) — `ref.func`, `ref.null`, `ref.is_null`, `ref.as_non_null`

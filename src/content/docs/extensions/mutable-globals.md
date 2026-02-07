@@ -11,6 +11,8 @@ description: 'Share and modify mutable globals between JS and Wasm.'
 )
 ```
 
+From JS, read and write via `.value`:
+
 ```javascript
 const { instance } = await WebAssembly.instantiate(wasmBytes);
 console.log(instance.exports.counter.value); // 0
@@ -24,12 +26,11 @@ console.log(instance.exports.counter.value); // 5
 (module
   (import "env" "g" (global $g (mut i32)))
   (func (export "inc")
-    global.get $g
-    i32.const 1
-    i32.add
-    global.set $g)
+    (global.set $g (i32.add (global.get $g) (i32.const 1))))
 )
 ```
+
+Create a `WebAssembly.Global` on the JS side and pass it as an import:
 
 ```javascript
 const g = new WebAssembly.Global({ value: 'i32', mutable: true }, 0);
@@ -38,9 +39,7 @@ instance.exports.inc();
 console.log(g.value); // 1
 ```
 
-References:
+## Instruction Reference
 
-- [Local & Global Instructions](/instructions/local-global) - `global.get`, `global.set`
-- [Module Structure](/instructions/module) - `global`, `import`, `export`
-- Spec: https://webassembly.github.io/spec/core/syntax/index.html
-- Practice: globals in https://github.com/EmNudge/watlings
+- [Local & Global Instructions](/instructions/local-global) — `global.get`, `global.set`
+- [Module Structure](/instructions/module) — `global`, `import`, `export`

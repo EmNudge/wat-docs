@@ -3,43 +3,25 @@ title: loop
 description: Repeat a block; branches target the top to continue.
 ---
 
-`loop` behaves like a labeled loop. Branching to its label jumps to the top (continue).
+Branching to a `loop` label jumps back to the top, like `continue` in other languages. Combine with an outer `block` for a clean break target.
 
 ```wat
 (module
   (func (param $n i32) (result i32)
     (local $acc i32)
-    i32.const 0
-    local.set $acc
-    (loop $again
-      local.get $n
-      i32.eqz
-      br_if $done
-
-      local.get $acc
-      i32.const 1
-      i32.add
-      local.set $acc
-
-      local.get $n
-      i32.const 1
-      i32.sub
-      local.set $n
-
-      br $again
-    )
-    (block $done)
-    local.get $acc)
+    (block $done
+      (loop $again
+        (br_if $done (i32.eqz (local.get $n)))
+        (local.set $acc (i32.add (local.get $acc) (i32.const 1)))
+        (local.set $n (i32.sub (local.get $n) (i32.const 1)))
+        (br $again)))
+    (local.get $acc))
 )
 ```
 
-Tips:
+- `br $again` jumps to the top of the loop.
+- `br_if $done` exits the outer block when `$n` reaches zero.
 
-- Use `br_if` to conditionally continue or exit.
-- Combine with an outer `block` label for a clean break target.
+## Instruction Reference
 
-Further reading:
-
-- [Control Flow Instructions](/instructions/control) - Complete reference for `block`, `loop`, `if`, `br`, `br_if`, etc.
-- Spec: [Control instructions](https://webassembly.github.io/spec/core/syntax/index.html)
-- Practice: related repetitions in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
+- [Control Flow Instructions](/instructions/control) — `block`, `loop`, `br`, `br_if`
