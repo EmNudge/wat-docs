@@ -108,7 +108,8 @@ To call back and forth with function references:
     i32.add)
   (elem (i32.const 0) $inc)
   (func (export "call0") (param $n i32) (result i32)
-    i32.const 0
+    local.get $n                  ;; argument for $inc
+    i32.const 0                   ;; table index
     call_indirect (type $t0)      ;; call function at table index 0
     )
 )

@@ -20,23 +20,7 @@ const DOCS_DIR = join(ROOT, 'src', 'content', 'docs');
  * Known LSP false positives — valid WAT code that the LSP incorrectly flags
  * due to missing support for proposals or type-checking bugs.
  */
-const KNOWN_LSP_ISSUES = new Set([
-  // LSP type-checker doesn't handle `if` with `return`/`unreachable` correctly
-  'control/calls.md:9',
-  'control/return.md:9',
-  'control/unreachable-nop.md:10',
-  'stack/traps.md:17',
-  'stack/traps.md:45',
-  'reference-types.md:41',
-  // LSP doesn't support ref.null/ref.func syntax in various positions
-  'extensions/bulk-memory.md:29',
-  'extensions/extended-const.md:20',
-  'reference-types.md:16',
-  // LSP doesn't support multi-value block params, SIMD, typed func refs
-  'extensions/multi-value.md:19',
-  'extensions/simd.md:9',
-  'extensions/typed-func-refs.md:9',
-]);
+const KNOWN_LSP_ISSUES = new Set([]);
 
 /**
  * Extract all ```wat code blocks from a markdown string.

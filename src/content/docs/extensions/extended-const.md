@@ -22,7 +22,7 @@ Extended const expressions allow more forms in places that require constants, li
   (func $id (type $t0) (param $x i32) (result i32) local.get $x)
 
   (table 2 funcref)
-  (elem (i32.const 0) (ref.func $id) (ref.null funcref))
+  (elem (i32.const 0) func $id)
 )
 ```
 
