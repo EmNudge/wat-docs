@@ -29,10 +29,10 @@ Bulk memory adds fast, in-engine operations for copying/filling regions of memor
 (module
   (table (export "table") 10 funcref)
   (func (export "tfill") (param $idx i32) (param $len i32)
-    ref.null funcref
     local.get $idx
+    ref.null func
     local.get $len
-    table.fill)
+    table.fill 0)
 )
 ```
 
