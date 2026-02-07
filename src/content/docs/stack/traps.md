@@ -3,6 +3,7 @@ title: Traps
 description: When and how execution traps (errors) occur in WebAssembly.
 ---
 
+
 A trap is a runtime error that aborts execution. Common trap sources include:
 
 - `unreachable` executed
@@ -56,6 +57,8 @@ A trap is a runtime error that aborts execution. Common trap sources include:
 
 References:
 
+- [Control Flow Instructions](/instructions/control) - `unreachable`, `call_indirect`, etc.
+- [i32 Instructions](/instructions/i32) - `i32.div_s`, `i32.load`, `i32.store`, etc.
 - Spec: [Runtime — Traps](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: defensive coding in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 

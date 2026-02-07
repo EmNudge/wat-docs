@@ -3,6 +3,7 @@ title: "Fixed-width SIMD (128-bit)"
 description: "Vector operations with v128 values and lane-wise instructions."
 ---
 
+
 SIMD enables lane-wise parallel operations on 128-bit vectors.
 
 ```wat
@@ -21,6 +22,7 @@ Notes:
 
 References:
 
+- [SIMD Instructions](/instructions/simd) - Complete reference for all v128, i8x16, i16x8, i32x4, i64x2, f32x4, f64x2 operations
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: numeric fundamentals in https://github.com/EmNudge/watlings
 

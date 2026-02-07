@@ -3,6 +3,7 @@ title: block
 description: Structured block with optional result type and label targets.
 ---
 
+
 `block` creates a new label and scope. It can optionally produce results.
 
 ```wat
@@ -26,6 +27,7 @@ Notes:
 
 Further reading:
 
+- [Control Flow Instructions](/instructions/control) - Complete reference for `block`, `loop`, `if`, `br`, `br_if`, etc.
 - Spec: [Blocks and result types](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: browse exercises in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 

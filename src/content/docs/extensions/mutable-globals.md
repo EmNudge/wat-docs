@@ -3,6 +3,7 @@ title: "Import/Export of Mutable Globals"
 description: "Share and modify mutable globals between JS and Wasm."
 ---
 
+
 ## Export a mutable global from Wasm
 
 ```wat
@@ -40,6 +41,8 @@ console.log(g.value); // 1
 
 References:
 
+- [Local & Global Instructions](/instructions/local-global) - `global.get`, `global.set`
+- [Module Structure](/instructions/module) - `global`, `import`, `export`
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: globals in https://github.com/EmNudge/watlings
 

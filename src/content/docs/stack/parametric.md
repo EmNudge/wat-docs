@@ -3,6 +3,7 @@ title: Parametric Instructions
 description: "Stack-level utilities: drop and select for branchless control."
 ---
 
+
 Parametric instructions operate directly on the value stack. They’re simple but powerful for branchless logic and cleanup.
 
 ## drop
@@ -45,6 +46,7 @@ Notes:
 
 Further reading:
 
+- [Parametric Instructions](/instructions/parametric) - Complete reference for `drop`, `select`
 - Spec: [Parametric instructions](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: related exercises in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 

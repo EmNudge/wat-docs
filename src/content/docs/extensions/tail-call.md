@@ -3,6 +3,7 @@ title: "Tail Calls"
 description: "return_call and return_call_indirect for optimized recursion."
 ---
 
+
 Tail calls allow a function to transfer control to another function as its final action without growing the stack.
 
 ```wat
@@ -23,6 +24,7 @@ Tail calls allow a function to transfer control to another function as its final
 
 References:
 
+- [Control Flow Instructions](/instructions/control) - `return_call`, `call`, `call_indirect`, etc.
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: recursion fundamentals in https://github.com/EmNudge/watlings
 

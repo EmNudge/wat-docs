@@ -3,6 +3,7 @@ title: br_table
 description: Multi-way branch (switch) over an index with a default.
 ---
 
+
 `br_table` pops an `i32` index and branches to one of several labels; out-of-range falls back to a default label. Useful for `switch`-like dispatch.
 
 ```wat
@@ -37,6 +38,7 @@ Tips:
 
 Further reading:
 
+- [Control Flow Instructions](/instructions/control) - Complete reference for `block`, `loop`, `if`, `br`, `br_if`, `br_table`, etc.
 - Spec: [br_table](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: create small switch exercises in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 

@@ -3,6 +3,7 @@ title: "call & call_indirect"
 description: Direct calls to known functions and indirect calls via tables.
 ---
 
+
 `call` invokes a known function by index/name. `call_indirect` dispatches through a table and type-checks a function signature at runtime.
 
 ```wat
@@ -35,6 +36,8 @@ Notes:
 
 Further reading:
 
+- [Control Flow Instructions](/instructions/control) - Complete reference for `call`, `call_indirect`, `call_ref`, etc.
+- [Table Instructions](/instructions/table) - `table.get`, `table.set`, `table.grow`, etc.
 - Spec: [Call instructions, tables, and types](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: function dispatch patterns in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 
