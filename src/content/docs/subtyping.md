@@ -16,26 +16,30 @@ Every heap type fits into one of four independent hierarchies:
 
 The bottom types (`none`, `nofunc`, `noexn`, `noextern`) are uninhabited -- no value has these types. They exist so that `ref.null none` is a valid null reference assignable to any nullable reference in the `any` hierarchy.
 
-```wat-snippet
-;; A parameter accepting any eq-compatible reference
-(func $identity (param $v (ref null eq)) (result (ref null eq))
-  (local.get $v))
+```wat
+(module
+  ;; A parameter accepting any eq-compatible reference
+  (func $identity (param $v (ref null eq)) (result (ref null eq))
+    (local.get $v))
+)
 ```
 
 ## Reference type matching
 
 A non-nullable reference `(ref $t)` is a subtype of its nullable counterpart `(ref null $t)`, but not vice versa. This means you can pass a non-null reference where a nullable one is expected, but you cannot pass a nullable reference where a non-null one is required.
 
-```wat-snippet
-(type $point (struct (field $x f32) (field $y f32)))
+```wat
+(module
+  (type $point (struct (field $x f32) (field $y f32)))
 
-;; Accepts non-nullable -- callers must provide a live reference
-(func $use_point (param $p (ref $point))
-  (drop (struct.get $point $x (local.get $p))))
+  ;; Accepts non-nullable -- callers must provide a live reference
+  (func $use_point (param $p (ref $point))
+    (drop (struct.get $point $x (local.get $p))))
 
-;; Accepts nullable -- callers may pass ref.null
-(func $maybe_point (param $p (ref null $point))
-  (drop (ref.is_null (local.get $p))))
+  ;; Accepts nullable -- callers may pass ref.null
+  (func $maybe_point (param $p (ref null $point))
+    (drop (ref.is_null (local.get $p))))
+)
 ```
 
 A call to `$use_point` satisfies the stricter contract. A `(ref $point)` value can also be passed to `$maybe_point` because `(ref $point)` is a subtype of `(ref null $point)`.
@@ -44,21 +48,23 @@ A call to `$use_point` satisfies the stricter contract. A `(ref $point)` value c
 
 A struct subtype must repeat all parent fields (in order and with compatible types) and may append new ones. This is called width subtyping. Use the `sub` keyword to declare a subtype relationship.
 
-```wat-snippet
-(type $shape (sub (struct
-  (field $x f32)
-  (field $y f32))))
+```wat
+(module
+  (type $shape (sub (struct
+    (field $x f32)
+    (field $y f32))))
 
-(type $circle (sub $shape (struct
-  (field $x f32)
-  (field $y f32)
-  (field $radius f32))))
+  (type $circle (sub $shape (struct
+    (field $x f32)
+    (field $y f32)
+    (field $radius f32))))
 
-(type $rect (sub $shape (struct
-  (field $x f32)
-  (field $y f32)
-  (field $w f32)
-  (field $h f32))))
+  (type $rect (sub $shape (struct
+    (field $x f32)
+    (field $y f32)
+    (field $w f32)
+    (field $h f32))))
+)
 ```
 
 A `(ref $circle)` can be used wherever `(ref $shape)` is expected. The extra `$radius` field is simply invisible to code that only knows about `$shape`.
@@ -88,19 +94,21 @@ Mutable fields are **invariant**: the field type must match exactly, because the
 
 By default, types declared with `sub` are open for further subtyping. Adding `final` seals a type so no other type can extend it.
 
-```wat-snippet
-(type $base (sub (struct
-  (field $id i32))))
+```wat
+(module
+  (type $base (sub (struct
+    (field $id i32))))
 
-(type $leaf (sub final $base (struct
-  (field $id i32)
-  (field $data f64))))
+  (type $leaf (sub final $base (struct
+    (field $id i32)
+    (field $data f64))))
 
-;; Error: $leaf is final, cannot extend
-;; (type $invalid (sub $leaf (struct
-;;   (field $id i32)
-;;   (field $data f64)
-;;   (field $extra i32))))
+  ;; Error: $leaf is final, cannot extend
+  ;; (type $invalid (sub $leaf (struct
+  ;;   (field $id i32)
+  ;;   (field $data f64)
+  ;;   (field $extra i32))))
+)
 ```
 
 Types not wrapped in `sub` at all are implicitly `sub final` -- they cannot be extended.
