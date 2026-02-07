@@ -154,10 +154,12 @@ Inline form (equivalent):
 
 The same sugar applies to other definitions:
 
-```wat-snippet
-(memory (export "mem") 1)                        ;; inline export
-(global $g (import "env" "val") i32)             ;; inline import
-(table (export "tbl") 1 funcref)                 ;; inline export
+```wat
+(module
+  (memory (export "mem") 1)                        ;; inline export
+  (global $g (import "env" "val") i32)             ;; inline import
+  (table (export "tbl") 1 funcref)                 ;; inline export
+)
 ```
 
 ## Inline type declarations
