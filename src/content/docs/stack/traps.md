@@ -33,7 +33,8 @@ A trap is a runtime error that aborts execution. Common trap sources include:
   (memory 1)
   (func
     i32.const 70000      ;; > 64 KiB (one page)
-    i32.load             ;; will trap if address out of bounds
+    i32.load             ;; will trap: address out of bounds
+    drop
   )
 )
 ```
