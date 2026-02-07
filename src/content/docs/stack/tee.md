@@ -3,7 +3,6 @@ title: tee (local.tee / global.tee)
 description: Store a value and keep it on the stack.
 ---
 
-
 `tee` variants write to a variable and also leave the value on the stack for further use.
 
 ## local.tee
@@ -42,5 +41,3 @@ References:
 - [Local & Global Instructions](/instructions/local-global) - Complete reference for `local.get`, `local.set`, `local.tee`, `global.get`, `global.set`
 - Spec: [Variable instructions — tee](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: variable ops in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
-
-

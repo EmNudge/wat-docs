@@ -10,6 +10,7 @@ Get element from table at index.
 **Signature:** `(param i32) (result reftype)`
 
 **Example:**
+
 ```wat
 (table $funcs 10 funcref)
 (table.get $funcs (i32.const 0))
@@ -24,6 +25,7 @@ Set element in table at index.
 **Signature:** `(param i32 reftype)`
 
 **Example:**
+
 ```wat
 (table $funcs 10 funcref)
 (table.set $funcs
@@ -40,6 +42,7 @@ Get current table size.
 **Signature:** `(result i32)`
 
 **Example:**
+
 ```wat
 (table.size $funcs)
 ```
@@ -53,6 +56,7 @@ Grow table by delta, returns previous size or -1 on failure.
 **Signature:** `(param reftype i32) (result i32)`
 
 **Example:**
+
 ```wat
 (table.grow $funcs
   (ref.null func)
@@ -68,6 +72,7 @@ Fill a region of a table with a value.
 **Signature:** `(param i32 reftype i32)`
 
 **Example:**
+
 ```wat
 (table $funcs 10 funcref)
 ;; Fill 5 slots starting at index 0 with null
@@ -86,6 +91,7 @@ Copy elements from one table region to another.
 **Signature:** `(param i32 i32 i32)`
 
 **Example:**
+
 ```wat
 (table $funcs 10 funcref)
 ;; Copy 3 elements from index 0 to index 5
@@ -104,6 +110,7 @@ Initialize table region from a passive element segment.
 **Signature:** `(param i32 i32 i32)`
 
 **Example:**
+
 ```wat
 (elem $my_elem func $f1 $f2 $f3)
 ;; Copy 3 elements from elem segment to table
@@ -120,10 +127,10 @@ Initialize table region from a passive element segment.
 Drop a passive element segment, freeing its memory.
 
 **Example:**
+
 ```wat
 (elem $my_elem func $f1 $f2)
 (elem.drop $my_elem)  ;; Element segment can no longer be used
 ```
 
 ---
-

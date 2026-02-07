@@ -1,8 +1,7 @@
 ---
-title: "Import/Export of Mutable Globals"
-description: "Share and modify mutable globals between JS and Wasm."
+title: 'Import/Export of Mutable Globals'
+description: 'Share and modify mutable globals between JS and Wasm.'
 ---
-
 
 ## Export a mutable global from Wasm
 
@@ -34,7 +33,7 @@ console.log(instance.exports.counter.value); // 5
 
 ```javascript
 const g = new WebAssembly.Global({ value: 'i32', mutable: true }, 0);
-const { instance } = await WebAssembly.instantiate(wasmBytes, { env: { g }});
+const { instance } = await WebAssembly.instantiate(wasmBytes, { env: { g } });
 instance.exports.inc();
 console.log(g.value); // 1
 ```
@@ -45,5 +44,3 @@ References:
 - [Module Structure](/instructions/module) - `global`, `import`, `export`
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: globals in https://github.com/EmNudge/watlings
-
-

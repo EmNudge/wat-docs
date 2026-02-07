@@ -3,7 +3,6 @@ title: return
 description: Exit the current function, optionally pushing results.
 ---
 
-
 `return` exits the current function immediately. Any required result values must already be on the stack.
 
 ```wat
@@ -34,5 +33,3 @@ Further reading:
 - [Control Flow Instructions](/instructions/control) - Complete reference for `return`, `return_call`, etc.
 - Spec: [Function results and return](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: early-exit tasks in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
-
-

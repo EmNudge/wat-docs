@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import * as monaco from 'monaco-editor';
 import { createWatLSP } from '@emnudge/wat-lsp';
+import treeSitterWasmUrl from '@emnudge/wat-lsp/wasm/tree-sitter.wasm?url';
+import watLspWasmUrl from '@emnudge/wat-lsp/wasm/wat_lsp_rust_bg.wasm?url';
 import * as vsctm from 'vscode-textmate';
 import * as oniguruma from 'vscode-oniguruma';
 
@@ -10,7 +12,7 @@ interface WatLSP {
   parse(source: string): void;
   provideHover(
     line: number,
-    col: number
+    col: number,
   ): {
     contents: { value: string };
     range?: {
@@ -20,7 +22,7 @@ interface WatLSP {
   } | null;
   provideDefinition(
     line: number,
-    col: number
+    col: number,
   ): {
     range: {
       start: { line: number; character: number };
@@ -37,7 +39,7 @@ interface WatLSP {
   }>;
   provideCompletion(
     line: number,
-    col: number
+    col: number,
   ): Array<{
     label: string;
     kind?: number;
@@ -152,7 +154,10 @@ async function initializeMonacoAndLSP(): Promise<void> {
         // Register TextMate-based token provider
         monaco.languages.setTokensProvider('wat', {
           getInitialState: () => new TMState(vsctm.INITIAL),
-          tokenize: (line: string, state: monaco.languages.IState): monaco.languages.ILineTokens => {
+          tokenize: (
+            line: string,
+            state: monaco.languages.IState,
+          ): monaco.languages.ILineTokens => {
             if (!watGrammar) {
               return { tokens: [], endState: state };
             }
@@ -188,8 +193,8 @@ async function initializeMonacoAndLSP(): Promise<void> {
 
       // Initialize the LSP
       const lsp = await createWatLSP({
-        treeSitterWasmPath: '/tree-sitter.wasm',
-        watLspWasmPath: '/wat_lsp_rust_bg.wasm',
+        treeSitterWasmPath: treeSitterWasmUrl,
+        watLspWasmPath: watLspWasmUrl,
       });
       watLSP = lsp as WatLSP;
 
@@ -197,7 +202,7 @@ async function initializeMonacoAndLSP(): Promise<void> {
       monaco.languages.registerHoverProvider('wat', {
         provideHover: (
           model: monaco.editor.ITextModel,
-          position: monaco.Position
+          position: monaco.Position,
         ): monaco.languages.ProviderResult<monaco.languages.Hover> => {
           if (!watLSP || !watLSP.ready) return null;
 
@@ -213,7 +218,7 @@ async function initializeMonacoAndLSP(): Promise<void> {
                   hover.range.start.line + 1,
                   hover.range.start.character + 1,
                   hover.range.end.line + 1,
-                  hover.range.end.character + 1
+                  hover.range.end.character + 1,
                 )
               : undefined,
           };
@@ -225,12 +230,15 @@ async function initializeMonacoAndLSP(): Promise<void> {
         triggerCharacters: ['.', '$', '@', '2', '4'],
         provideCompletionItems: (
           model: monaco.editor.ITextModel,
-          position: monaco.Position
+          position: monaco.Position,
         ): monaco.languages.ProviderResult<monaco.languages.CompletionList> => {
           if (!watLSP || !watLSP.ready) return { suggestions: [] };
 
           watLSP.parse(model.getValue());
-          const completions = watLSP.provideCompletion(position.lineNumber - 1, position.column - 1);
+          const completions = watLSP.provideCompletion(
+            position.lineNumber - 1,
+            position.column - 1,
+          );
 
           const suggestions = completions.map((item) => ({
             label: item.label,
@@ -255,7 +263,7 @@ async function initializeMonacoAndLSP(): Promise<void> {
       monaco.languages.registerDefinitionProvider('wat', {
         provideDefinition: (
           model: monaco.editor.ITextModel,
-          position: monaco.Position
+          position: monaco.Position,
         ): monaco.languages.ProviderResult<monaco.languages.Definition> => {
           if (!watLSP || !watLSP.ready) return null;
 
@@ -270,7 +278,7 @@ async function initializeMonacoAndLSP(): Promise<void> {
               definition.range.start.line + 1,
               definition.range.start.character + 1,
               definition.range.end.line + 1,
-              definition.range.end.character + 1
+              definition.range.end.character + 1,
             ),
           };
         },
@@ -282,7 +290,7 @@ async function initializeMonacoAndLSP(): Promise<void> {
         monaco.languages.registerDocumentSemanticTokensProvider('wat', {
           getLegend: () => legend,
           provideDocumentSemanticTokens: (
-            model: monaco.editor.ITextModel
+            model: monaco.editor.ITextModel,
           ): monaco.languages.ProviderResult<monaco.languages.SemanticTokens> => {
             if (!watLSP || !watLSP.ready) {
               return { data: new Uint32Array(0) };
@@ -347,7 +355,9 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
   let code = '';
 
   if (lines.length > 0) {
-    code = Array.from(lines).map(line => line.textContent || '').join('\n');
+    code = Array.from(lines)
+      .map((line) => line.textContent || '')
+      .join('\n');
   } else {
     // Fallback: use code element
     const codeEl = wrapper.querySelector('code');
@@ -427,9 +437,7 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
 }
 
 async function enhanceAllWatBlocks() {
-  const pres = document.querySelectorAll(
-    'pre[data-language="wat"], pre[data-language="wast"]'
-  );
+  const pres = document.querySelectorAll('pre[data-language="wat"], pre[data-language="wast"]');
 
   for (const pre of pres) {
     const wrapper = pre.closest('.expressive-code');

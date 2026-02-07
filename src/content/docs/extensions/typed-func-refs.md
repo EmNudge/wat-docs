@@ -1,8 +1,7 @@
 ---
-title: "Typed Function References"
-description: "Precise typing for function references and call_ref."
+title: 'Typed Function References'
+description: 'Precise typing for function references and call_ref.'
 ---
-
 
 Typed function references make function refs carry specific types and enable `call_ref`.
 
@@ -31,5 +30,3 @@ References:
 - [Reference Instructions](/instructions/reference) - `ref.func`, `ref.null`, `ref.is_null`, `ref.as_non_null`
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: dispatch patterns in https://github.com/EmNudge/watlings
-
-

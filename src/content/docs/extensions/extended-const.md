@@ -1,8 +1,7 @@
 ---
-title: "Extended Constant Expressions"
-description: "Richer constant initializers for globals, tables, and element/data offsets."
+title: 'Extended Constant Expressions'
+description: 'Richer constant initializers for globals, tables, and element/data offsets.'
 ---
-
 
 Extended const expressions allow more forms in places that require constants, like global initializers and element/data offsets.
 
@@ -34,5 +33,3 @@ References:
 - [Module Structure](/instructions/module) - `global`, `elem`, `data`
 - Spec (syntax): https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: globals/tables in https://github.com/EmNudge/watlings
-
-

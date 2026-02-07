@@ -3,7 +3,6 @@ title: Reference Types
 description: Using funcref and externref, with tables and ref.* instructions.
 ---
 
-
 Reference types let Wasm refer to functions and host objects.
 
 ## Types
@@ -66,5 +65,3 @@ References:
 - [Type Names](/instructions/types) - `funcref`, `externref`, and other reference types
 - Spec: [Reference types and tables](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: function tables in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
-
-

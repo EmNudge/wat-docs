@@ -1,8 +1,7 @@
 ---
-title: "Multi-value"
-description: "Functions and blocks can produce multiple results; blocks can take parameters."
+title: 'Multi-value'
+description: 'Functions and blocks can produce multiple results; blocks can take parameters.'
 ---
-
 
 ## Functions returning multiple values
 
@@ -35,5 +34,3 @@ References:
 - [Control Flow Instructions](/instructions/control) - `block`, `loop`, `if` with multiple results
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: multi-result functions in https://github.com/EmNudge/watlings
-
-

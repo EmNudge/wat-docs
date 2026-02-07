@@ -10,6 +10,7 @@ Create a new array on the heap.
 **Signature:** `(param field_type i32) (result arrayref)`
 
 **Example:**
+
 ```wat
 (array.new $my_array (i32.const 0) (i32.const 10)) ;; Create size 10 array filled with 0
 ```
@@ -23,6 +24,7 @@ Create a new array with default values.
 **Signature:** `(param i32) (result arrayref)`
 
 **Example:**
+
 ```wat
 (array.new_default $my_array (i32.const 10))
 ```
@@ -36,6 +38,7 @@ Create a new array from a fixed set of arguments.
 **Signature:** `(param field_type...) (result arrayref)`
 
 **Example:**
+
 ```wat
 (array.new_fixed $my_array 3 (i32.const 1) (i32.const 2) (i32.const 3))
 ```
@@ -49,6 +52,7 @@ Create a new array from a data segment.
 **Signature:** `(param i32 i32) (result arrayref)`
 
 **Example:**
+
 ```wat
 (array.new_data $my_array $data_index (i32.const 0) (i32.const 10))
 ```
@@ -62,6 +66,7 @@ Create a new array from an element segment.
 **Signature:** `(param i32 i32) (result arrayref)`
 
 **Example:**
+
 ```wat
 (array.new_elem $my_array $elem_index (i32.const 0) (i32.const 10))
 ```
@@ -75,6 +80,7 @@ Get an element from an array.
 **Signature:** `(param arrayref i32) (result field_type)`
 
 **Example:**
+
 ```wat
 (array.get $my_array (local.get $arr) (i32.const 5))
 ```
@@ -88,6 +94,7 @@ Get a signed element from an array.
 **Signature:** `(param arrayref i32) (result field_type)`
 
 **Example:**
+
 ```wat
 (array.get_s $my_array (local.get $arr) (i32.const 5))
 ```
@@ -101,6 +108,7 @@ Get an unsigned element from an array.
 **Signature:** `(param arrayref i32) (result field_type)`
 
 **Example:**
+
 ```wat
 (array.get_u $my_array (local.get $arr) (i32.const 5))
 ```
@@ -114,6 +122,7 @@ Set an element in an array.
 **Signature:** `(param arrayref i32 field_type)`
 
 **Example:**
+
 ```wat
 (array.set $my_array (local.get $arr) (i32.const 5) (i32.const 42))
 ```
@@ -127,6 +136,7 @@ Get the length of an array.
 **Signature:** `(param arrayref) (result i32)`
 
 **Example:**
+
 ```wat
 (array.len (local.get $arr))
 ```
@@ -140,6 +150,7 @@ Fill a range of an array with a value.
 **Signature:** `(param arrayref i32 field_type i32)`
 
 **Example:**
+
 ```wat
 (array.fill (local.get $arr) (i32.const 0) (i32.const 42) (i32.const 10))
 ```
@@ -153,6 +164,7 @@ Copy a range from one array to another.
 **Signature:** `(param arrayref i32 arrayref i32 i32)`
 
 **Example:**
+
 ```wat
 (array.copy $dst_type $src_type (local.get $dst) (i32.const 0) (local.get $src) (i32.const 0) (i32.const 10))
 ```
@@ -166,6 +178,7 @@ Initialize a portion of an array from a passive data segment. Takes the array, d
 **Signature:** `(param arrayref i32 i32 i32)`
 
 **Example:**
+
 ```wat
 (array.init_data $byte_array $data_segment
   (local.get $arr)     ;; array reference
@@ -183,6 +196,7 @@ Initialize a portion of an array from a passive element segment. Takes the array
 **Signature:** `(param arrayref i32 i32 i32)`
 
 **Example:**
+
 ```wat
 (array.init_elem $funcref_array $elem_segment
   (local.get $arr)     ;; array reference
@@ -192,4 +206,3 @@ Initialize a portion of an array from a passive element segment. Takes the array
 ```
 
 ---
-

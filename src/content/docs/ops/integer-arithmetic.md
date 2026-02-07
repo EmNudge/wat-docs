@@ -3,7 +3,6 @@ title: Integer Arithmetic
 description: i32/i64 add, sub, mul, div, rem and typical usage.
 ---
 
-
 Instructions wrap on overflow (two’s complement). Division by zero traps.
 
 ## add, sub, mul
@@ -44,9 +43,8 @@ Remainder:
 Also available for `i64.*`.
 
 Reference:
+
 - [i32 Instructions](/instructions/i32) - Complete i32 instruction reference
 - [i64 Instructions](/instructions/i64) - Complete i64 instruction reference
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: integers in https://github.com/EmNudge/watlings
-
-

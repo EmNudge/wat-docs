@@ -1,8 +1,7 @@
 ---
-title: "Memory & Data"
+title: 'Memory & Data'
 description: Linear memory, loads/stores, memory size/grow, and data segments.
 ---
-
 
 WebAssembly exposes a contiguous byte array called linear memory. You interact with it using typed load/store instructions and can initialize it using data segments.
 
@@ -73,5 +72,3 @@ References:
 - [f64 Instructions](/instructions/f64) - `f64.load`, `f64.store`
 - Spec: [Memories and data segments](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: memory tasks in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
-
-

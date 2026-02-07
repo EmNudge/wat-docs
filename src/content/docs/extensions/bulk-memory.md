@@ -1,8 +1,7 @@
 ---
-title: "Bulk Memory Operations"
-description: "Efficient copying and filling for memory and tables."
+title: 'Bulk Memory Operations'
+description: 'Efficient copying and filling for memory and tables.'
 ---
-
 
 Bulk memory adds fast, in-engine operations for copying/filling regions of memory and tables.
 
@@ -43,5 +42,3 @@ References:
 - [Table Instructions](/instructions/table) - `table.copy`, `table.fill`, `table.init`, `elem.drop`
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: memory/table tasks in https://github.com/EmNudge/watlings
-
-

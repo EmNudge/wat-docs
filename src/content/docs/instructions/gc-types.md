@@ -8,6 +8,7 @@ description: WasmGC type definitions
 Declares a subtype that extends another type, enabling type hierarchies. The subtype must be compatible with its parent type.
 
 **Example:**
+
 ```wat
 ;; Base type
 (type $shape (struct
@@ -39,6 +40,7 @@ Declares a subtype that extends another type, enabling type hierarchies. The sub
 Modifier for subtypes that prevents further subtyping. A final type is sealed and cannot be extended.
 
 **Example:**
+
 ```wat
 ;; This type cannot be subtyped
 (type $sealed (sub final (struct
@@ -59,6 +61,7 @@ Modifier for subtypes that prevents further subtyping. A final type is sealed an
 Declares a recursive type group, allowing mutually recursive type definitions.
 
 **Example:**
+
 ```wat
 ;; Mutually recursive types
 (rec
@@ -87,6 +90,7 @@ Declares a recursive type group, allowing mutually recursive type definitions.
 Declares a mutable global variable or struct/array field. Without `mut`, the value is immutable.
 
 **Example:**
+
 ```wat
 ;; Mutable global
 (global $counter (mut i32) (i32.const 0))
@@ -105,6 +109,7 @@ Declares a mutable global variable or struct/array field. Without `mut`, the val
 Declares shared memory that can be accessed by multiple threads (threads proposal). Required for atomic operations.
 
 **Example:**
+
 ```wat
 ;; Shared memory with initial 1 page, max 4 pages
 (memory $mem 1 4 shared)
@@ -120,6 +125,7 @@ Declares shared memory that can be accessed by multiple threads (threads proposa
 Heap type representing the null reference. Used in type annotations to indicate a nullable reference type, or as the heap type for `ref.null` instructions.
 
 **Example:**
+
 ```wat
 ;; Nullable reference to a function type
 (local $callback (ref null func))
@@ -140,6 +146,7 @@ Heap type representing the null reference. Used in type annotations to indicate 
 Declares a reference type, optionally nullable. Used in type annotations for parameters, locals, globals, and fields.
 
 **Example:**
+
 ```wat
 ;; Non-nullable reference to a struct type
 (param $p (ref $my_struct))
@@ -164,6 +171,7 @@ Declares a reference type, optionally nullable. Used in type annotations for par
 Declares a field within a struct type definition. Fields can be mutable or immutable and have optional names.
 
 **Example:**
+
 ```wat
 ;; Struct with named fields
 (type $point (struct
@@ -193,6 +201,7 @@ Declares a field within a struct type definition. Fields can be mutable or immut
 Declares a struct type with zero or more fields. Structs are heap-allocated reference types used with the GC proposal.
 
 **Example:**
+
 ```wat
 ;; Simple struct type
 (type $point (struct
@@ -222,6 +231,7 @@ Declares a struct type with zero or more fields. Structs are heap-allocated refe
 Declares an array type with elements of a specified type. Arrays are heap-allocated reference types with a fixed length determined at creation time. Used with the GC proposal.
 
 **Example:**
+
 ```wat
 ;; Simple array of i32
 (type $int_array (array i32))
@@ -241,4 +251,3 @@ Declares an array type with elements of a specified type. Arrays are heap-alloca
 ```
 
 ---
-

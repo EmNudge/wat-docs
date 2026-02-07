@@ -10,6 +10,7 @@ Partially apply a function, binding some arguments to produce a new function ref
 **Signature:** `(param funcref args...) (result funcref)`
 
 **Example:**
+
 ```wat
 (type $binary (func (param i32 i32) (result i32)))
 (type $unary (func (param i32) (result i32)))
@@ -21,4 +22,3 @@ Partially apply a function, binding some arguments to produce a new function ref
 ```
 
 ---
-

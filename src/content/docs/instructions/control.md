@@ -8,6 +8,7 @@ description: Control flow instructions
 Define a block with a label at the end. Branching to this label exits the block.
 
 **Example:**
+
 ```wat
 (block $exit (result i32)
   (i32.const 10)
@@ -24,6 +25,7 @@ Define a block with a label at the end. Branching to this label exits the block.
 Define a loop with a label at the start. Branching to this label restarts the loop.
 
 **Example:**
+
 ```wat
 (local $i i32)
 (local.set $i (i32.const 0))
@@ -41,6 +43,7 @@ Define a loop with a label at the start. Branching to this label restarts the lo
 Conditional execution based on stack value. Execute 'then' if non-zero, 'else' if zero.
 
 **Example:**
+
 ```wat
 (if (result i32) (i32.const 1)
   (then (i32.const 42))
@@ -61,6 +64,7 @@ Conditional execution based on stack value. Execute 'then' if non-zero, 'else' i
 Marks the branch of an `if` statement that executes when the condition is non-zero (true).
 
 **Example:**
+
 ```wat
 (if (i32.gt_s (local.get $x) (i32.const 0))
   (then
@@ -80,6 +84,7 @@ Marks the branch of an `if` statement that executes when the condition is non-ze
 Marks the branch of an `if` statement that executes when the condition is zero (false).
 
 **Example:**
+
 ```wat
 (if (result i32) (local.get $flag)
   (then (i32.const 1))
@@ -100,6 +105,7 @@ Marks the branch of an `if` statement that executes when the condition is zero (
 Unconditional branch to a label. Exits blocks/loops.
 
 **Example:**
+
 ```wat
 (block $outer
   (block $inner
@@ -118,6 +124,7 @@ Conditional branch to a label if top stack value is non-zero.
 **Signature:** `(param i32)`
 
 **Example:**
+
 ```wat
 (block $exit
   (br_if $exit (i32.eq (local.get $x) (i32.const 0)))
@@ -134,6 +141,7 @@ Table-based branch. Jumps to label based on index.
 **Signature:** `(param i32)`
 
 **Example:**
+
 ```wat
 (block $case0
   (block $case1
@@ -161,6 +169,7 @@ Table-based branch. Jumps to label based on index.
 Call a function by name or index.
 
 **Example:**
+
 ```wat
 (func $add (param i32 i32) (result i32)
   (i32.add (local.get 0) (local.get 1)))
@@ -178,6 +187,7 @@ Call a function by name or index.
 Call a function from a table using a dynamic index.
 
 **Example:**
+
 ```wat
 (type $binop (func (param i32 i32) (result i32)))
 (table 2 funcref)
@@ -204,6 +214,7 @@ Call a function from a table using a dynamic index.
 Return from the current function immediately.
 
 **Example:**
+
 ```wat
 (func $early_return (param $x i32) (result i32)
   (if (i32.eqz (local.get $x))
@@ -220,6 +231,7 @@ Return from the current function immediately.
 Tail call: calls a function and returns its result directly. The current function's frame is replaced, avoiding stack growth for recursive calls.
 
 **Example:**
+
 ```wat
 (func $factorial_tail (param $n i32) (param $acc i32) (result i32)
   (if (result i32) (i32.le_s (local.get $n) (i32.const 1))
@@ -236,6 +248,7 @@ Tail call: calls a function and returns its result directly. The current functio
 Trap unconditionally. Used for code that should never be reached.
 
 **Example:**
+
 ```wat
 (func $divide (param $x i32) (param $y i32) (result i32)
   (if (i32.eqz (local.get $y))
@@ -251,6 +264,7 @@ Trap unconditionally. Used for code that should never be reached.
 No operation. Does nothing.
 
 **Example:**
+
 ```wat
 (nop)  ;; Useful for debugging or as placeholder
 ```
@@ -264,6 +278,7 @@ Call a function through a typed function reference. The reference type determine
 **Signature:** `(param args... funcref) (result results...)`
 
 **Example:**
+
 ```wat
 (type $sig (func (param i32) (result i32)))
 (call_ref $sig (i32.const 42) (local.get $func_ref))
@@ -278,6 +293,7 @@ Tail call a function through a typed function reference. Immediately returns the
 **Signature:** `(param args... funcref) (result results...)`
 
 **Example:**
+
 ```wat
 (type $sig (func (param i32) (result i32)))
 (return_call_ref $sig (i32.const 42) (local.get $func_ref))
@@ -292,6 +308,7 @@ Branch to a label if the reference is null. If not null, the non-null reference 
 **Signature:** `(param ref) (result ref?)`
 
 **Example:**
+
 ```wat
 (block $is_null
   (br_on_null $is_null (local.get $maybe_null_ref))
@@ -310,6 +327,7 @@ Branch to a label if the reference is not null. The non-null reference is passed
 **Signature:** `(param ref) (result)`
 
 **Example:**
+
 ```wat
 (block $not_null (param (ref $type))
   (br_on_non_null $not_null (local.get $maybe_null_ref))
@@ -320,4 +338,3 @@ Branch to a label if the reference is not null. The non-null reference is passed
 ```
 
 ---
-

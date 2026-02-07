@@ -1,8 +1,7 @@
 ---
-title: "Bitwise & Shifts"
+title: 'Bitwise & Shifts'
 description: and, or, xor, shifts, and rotates for integers.
 ---
-
 
 Bitwise ops are for integers only.
 
@@ -29,9 +28,8 @@ Shifts/rotates:
 Also available for `i64.*`.
 
 Reference:
+
 - [i32 Instructions](/instructions/i32) - Complete i32 instruction reference
 - [i64 Instructions](/instructions/i64) - Complete i64 instruction reference
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: bitwise tasks in https://github.com/EmNudge/watlings
-
-

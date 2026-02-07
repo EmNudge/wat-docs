@@ -1,8 +1,7 @@
 ---
-title: "br & br_if"
+title: 'br & br_if'
 description: Structured branches to labeled blocks and loops.
 ---
-
 
 `br $label` performs an unconditional jump to the end of a `block` or to the top of a `loop`. `br_if` pops a condition and branches if non-zero.
 
@@ -38,5 +37,3 @@ Further reading:
 - [Control Flow Instructions](/instructions/control) - Complete reference for `block`, `loop`, `if`, `br`, `br_if`, etc.
 - Spec: [Branching and label indices](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: explore labeled blocks in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
-
-

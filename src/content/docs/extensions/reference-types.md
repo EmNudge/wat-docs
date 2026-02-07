@@ -1,6 +1,6 @@
 ---
-title: "Reference Types (externref)"
-description: "Hold references to host objects and use function references."
+title: 'Reference Types (externref)'
+description: 'Hold references to host objects and use function references.'
 ---
 
 This extension lets Wasm store references to host objects (`externref`) and introduces more flexible function references. See the Language page for fundamentals.
@@ -15,5 +15,3 @@ References:
 - [Type Names](/instructions/types) - `funcref`, `externref`, etc.
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: function tables in https://github.com/EmNudge/watlings
-
-
