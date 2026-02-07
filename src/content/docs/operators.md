@@ -3,7 +3,6 @@ title: Operators
 description: The essential WAT instructions for arithmetic, comparison, locals, and control flow.
 ---
 
-
 At its core, WebAssembly is a stack machine. Most instructions pop their operands from the stack and push results back. Below are the operators you’ll reach for most often.
 
 For full instruction lists and exact rules, see the [WebAssembly spec — Structure → Instructions](https://webassembly.github.io/spec/core/syntax/index.html).
@@ -125,6 +124,7 @@ See the spec for precise typing rules and structured control forms: [WebAssembly
 ## Instruction Reference
 
 For complete instruction documentation with signatures and examples:
+
 - [i32 Instructions](/instructions/i32) - All 32-bit integer operations
 - [i64 Instructions](/instructions/i64) - All 64-bit integer operations
 - [f32 Instructions](/instructions/f32) - All 32-bit float operations
@@ -135,5 +135,3 @@ For complete instruction documentation with signatures and examples:
 ## Practice
 
 Try small exercises (arithmetic, comparisons, control flow) in [watlings](https://github.com/EmNudge/watlings) to get the stack mental model into your fingers.
-
-

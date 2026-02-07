@@ -9,115 +9,201 @@ const outputDir = path.join(rootDir, 'src/content/docs/instructions');
 
 // Category definitions
 const categories = {
-  'i32': {
+  i32: {
     title: 'i32 Instructions',
     description: '32-bit integer operations',
-    prefix: 'i32.'
+    prefix: 'i32.',
   },
-  'i64': {
+  i64: {
     title: 'i64 Instructions',
     description: '64-bit integer operations',
-    prefix: 'i64.'
+    prefix: 'i64.',
   },
-  'f32': {
+  f32: {
     title: 'f32 Instructions',
     description: '32-bit floating-point operations',
-    prefix: 'f32.'
+    prefix: 'f32.',
   },
-  'f64': {
+  f64: {
     title: 'f64 Instructions',
     description: '64-bit floating-point operations',
-    prefix: 'f64.'
+    prefix: 'f64.',
   },
   'local-global': {
     title: 'Local & Global',
     description: 'Local and global variable operations',
-    match: (name) => name.startsWith('local.') || name.startsWith('global.')
+    match: (name) => name.startsWith('local.') || name.startsWith('global.'),
   },
-  'control': {
+  control: {
     title: 'Control Flow',
     description: 'Control flow instructions',
-    match: (name) => ['block', 'loop', 'if', 'then', 'else', 'br', 'br_if', 'br_table', 'call', 'call_indirect', 'return', 'return_call', 'unreachable', 'nop', 'call_ref', 'return_call_ref', 'br_on_null', 'br_on_non_null'].includes(name)
+    match: (name) =>
+      [
+        'block',
+        'loop',
+        'if',
+        'then',
+        'else',
+        'br',
+        'br_if',
+        'br_table',
+        'call',
+        'call_indirect',
+        'return',
+        'return_call',
+        'unreachable',
+        'nop',
+        'call_ref',
+        'return_call_ref',
+        'br_on_null',
+        'br_on_non_null',
+      ].includes(name),
   },
-  'parametric': {
+  parametric: {
     title: 'Parametric',
     description: 'Stack manipulation instructions',
-    match: (name) => ['drop', 'select'].includes(name)
+    match: (name) => ['drop', 'select'].includes(name),
   },
-  'memory': {
+  memory: {
     title: 'Memory',
     description: 'Memory operations',
-    match: (name) => (name.startsWith('memory.') && !name.includes('.atomic.')) || name.startsWith('data.')
+    match: (name) =>
+      (name.startsWith('memory.') && !name.includes('.atomic.')) || name.startsWith('data.'),
   },
-  'table': {
+  table: {
     title: 'Table',
     description: 'Table operations',
-    match: (name) => name.startsWith('table.') || name.startsWith('elem.')
+    match: (name) => name.startsWith('table.') || name.startsWith('elem.'),
   },
-  'reference': {
+  reference: {
     title: 'Reference',
     description: 'Reference type operations',
     match: (name) => {
       const gcCasts = ['ref.test', 'ref.cast', 'ref.cast_null', 'ref.eq', 'ref.i31'];
       if (gcCasts.includes(name)) return false;
       return name.startsWith('ref.') || ['any.convert_extern', 'extern.convert_any'].includes(name);
-    }
+    },
   },
-  'module': {
+  module: {
     title: 'Module Structure',
     description: 'Module definition constructs',
-    match: (name) => ['module', 'func', 'param', 'result', 'local', 'global', 'table', 'memory', 'import', 'export', 'start', 'type', 'elem', 'data'].includes(name)
+    match: (name) =>
+      [
+        'module',
+        'func',
+        'param',
+        'result',
+        'local',
+        'global',
+        'table',
+        'memory',
+        'import',
+        'export',
+        'start',
+        'type',
+        'elem',
+        'data',
+      ].includes(name),
   },
   'gc-types': {
     title: 'GC Types',
     description: 'WasmGC type definitions',
-    match: (name) => ['sub', 'final', 'rec', 'field', 'struct', 'array', 'mut', 'shared', 'null', 'ref'].includes(name)
+    match: (name) =>
+      ['sub', 'final', 'rec', 'field', 'struct', 'array', 'mut', 'shared', 'null', 'ref'].includes(
+        name,
+      ),
   },
   'gc-struct': {
     title: 'GC Struct',
     description: 'WasmGC struct operations',
-    prefix: 'struct.'
+    prefix: 'struct.',
   },
   'gc-array': {
     title: 'GC Array',
     description: 'WasmGC array operations',
-    prefix: 'array.'
+    prefix: 'array.',
   },
   'gc-i31': {
     title: 'GC i31',
     description: 'WasmGC i31 operations',
-    match: (name) => name.startsWith('i31.') || name === 'ref.i31'
+    match: (name) => name.startsWith('i31.') || name === 'ref.i31',
   },
   'gc-casts': {
     title: 'GC Casts',
     description: 'WasmGC type cast operations',
-    match: (name) => ['ref.test', 'ref.cast', 'ref.cast_null', 'br_on_cast', 'br_on_cast_fail', 'ref.eq'].includes(name)
+    match: (name) =>
+      ['ref.test', 'ref.cast', 'ref.cast_null', 'br_on_cast', 'br_on_cast_fail', 'ref.eq'].includes(
+        name,
+      ),
   },
-  'exceptions': {
+  exceptions: {
     title: 'Exceptions',
     description: 'Exception handling operations',
-    match: (name) => ['throw', 'throw_ref', 'rethrow', 'tag', 'try_table', 'catch', 'catch_all', 'catch_ref', 'catch_all_ref'].includes(name)
+    match: (name) =>
+      [
+        'throw',
+        'throw_ref',
+        'rethrow',
+        'tag',
+        'try_table',
+        'catch',
+        'catch_all',
+        'catch_ref',
+        'catch_all_ref',
+      ].includes(name),
   },
-  'simd': {
+  simd: {
     title: 'SIMD (v128)',
     description: '128-bit SIMD operations',
-    match: (name) => name.startsWith('v128.') || name.startsWith('i8x16.') || name.startsWith('i16x8.') || name.startsWith('i32x4.') || name.startsWith('i64x2.') || name.startsWith('f32x4.') || name.startsWith('f64x2.')
+    match: (name) =>
+      name.startsWith('v128.') ||
+      name.startsWith('i8x16.') ||
+      name.startsWith('i16x8.') ||
+      name.startsWith('i32x4.') ||
+      name.startsWith('i64x2.') ||
+      name.startsWith('f32x4.') ||
+      name.startsWith('f64x2.'),
   },
-  'atomic': {
+  atomic: {
     title: 'Atomics',
     description: 'Atomic memory operations (threads)',
-    match: (name) => name.includes('.atomic.') || name === 'atomic.fence'
+    match: (name) => name.includes('.atomic.') || name === 'atomic.fence',
   },
-  'types': {
+  types: {
     title: 'Type Names',
     description: 'Value type names used in signatures',
-    match: (name) => ['i32', 'i64', 'f32', 'f64', 'v128', 'i8x16', 'i16x8', 'i32x4', 'i64x2', 'f32x4', 'f64x2', 'funcref', 'externref', 'anyref', 'eqref', 'i31ref', 'structref', 'arrayref', 'nullref', 'nullfuncref', 'nullexternref', 'i8', 'i16'].includes(name)
+    match: (name) =>
+      [
+        'i32',
+        'i64',
+        'f32',
+        'f64',
+        'v128',
+        'i8x16',
+        'i16x8',
+        'i32x4',
+        'i64x2',
+        'f32x4',
+        'f64x2',
+        'funcref',
+        'externref',
+        'anyref',
+        'eqref',
+        'i31ref',
+        'structref',
+        'arrayref',
+        'nullref',
+        'nullfuncref',
+        'nullexternref',
+        'i8',
+        'i16',
+      ].includes(name),
   },
-  'misc': {
+  misc: {
     title: 'Miscellaneous',
     description: 'Other instructions',
-    match: () => true // Catch-all
-  }
+    match: () => true, // Catch-all
+  },
 };
 
 // Parse instruction from markdown
@@ -155,9 +241,15 @@ function categorize(name) {
   }
 
   // Check SIMD (includes prefixes like i32x4., f32x4.)
-  if (name.startsWith('v128.') || name.startsWith('i8x16.') || name.startsWith('i16x8.') ||
-      name.startsWith('i32x4.') || name.startsWith('i64x2.') || name.startsWith('f32x4.') ||
-      name.startsWith('f64x2.')) {
+  if (
+    name.startsWith('v128.') ||
+    name.startsWith('i8x16.') ||
+    name.startsWith('i16x8.') ||
+    name.startsWith('i32x4.') ||
+    name.startsWith('i64x2.') ||
+    name.startsWith('f32x4.') ||
+    name.startsWith('f64x2.')
+  ) {
     return 'simd';
   }
 
@@ -167,7 +259,11 @@ function categorize(name) {
   if (name.startsWith('i31.') || name === 'ref.i31') return 'gc-i31';
 
   // Check GC casts
-  if (['ref.test', 'ref.cast', 'ref.cast_null', 'br_on_cast', 'br_on_cast_fail', 'ref.eq'].includes(name)) {
+  if (
+    ['ref.test', 'ref.cast', 'ref.cast_null', 'br_on_cast', 'br_on_cast_fail', 'ref.eq'].includes(
+      name,
+    )
+  ) {
     return 'gc-casts';
   }
 
@@ -221,11 +317,9 @@ async function main() {
   const content = fs.readFileSync(instructionsPath, 'utf-8');
 
   // Split by ## at the start of a line (instruction headers)
-  const blocks = content.split(/\n(?=## )/g).filter(b => b.trim() && b.startsWith('## '));
+  const blocks = content.split(/\n(?=## )/g).filter((b) => b.trim() && b.startsWith('## '));
 
-  const instructions = blocks
-    .map(parseInstruction)
-    .filter(Boolean);
+  const instructions = blocks.map(parseInstruction).filter(Boolean);
 
   console.log(`Parsed ${instructions.length} instructions`);
 

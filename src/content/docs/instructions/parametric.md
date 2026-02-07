@@ -8,6 +8,7 @@ description: Stack manipulation instructions
 Remove the top value from the stack.
 
 **Example:**
+
 ```wat
 (i32.const 42)
 (drop)  ;; Remove 42 from stack
@@ -22,6 +23,7 @@ Select one of two values based on a condition.
 **Signature:** `(param T T i32) (result T)`
 
 **Example:**
+
 ```wat
 ;; Returns first value if condition is non-zero, else second
 (select
@@ -37,4 +39,3 @@ Select one of two values based on a condition.
 ```
 
 ---
-

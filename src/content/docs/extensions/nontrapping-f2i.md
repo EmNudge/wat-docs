@@ -1,8 +1,7 @@
 ---
-title: "Non-trapping float-to-int"
-description: "Saturating conversions from floats to integers that do not trap."
+title: 'Non-trapping float-to-int'
+description: 'Saturating conversions from floats to integers that do not trap.'
 ---
-
 
 Instead of trapping on overflow/NaN, these instructions clamp to min/max and convert NaN to 0.
 
@@ -25,5 +24,3 @@ References:
 - [i64 Instructions](/instructions/i64) - `i64.trunc_sat_f32_s`, `i64.trunc_sat_f32_u`, `i64.trunc_sat_f64_s`, `i64.trunc_sat_f64_u`
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: numeric conversions in https://github.com/EmNudge/watlings
-
-

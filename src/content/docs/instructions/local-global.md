@@ -8,6 +8,7 @@ description: Local and global variable operations
 Get the value of a local variable by name or index.
 
 **Example:**
+
 ```wat
 (func $example (param $x i32) (result i32)
   (local $temp i32)
@@ -24,6 +25,7 @@ Get the value of a local variable by name or index.
 Set the value of a local variable by name or index.
 
 **Example:**
+
 ```wat
 (func $example (param $x i32)
   (local $result i32)
@@ -39,6 +41,7 @@ Set the value of a local variable by name or index.
 Set the value of a local variable and return it (combination of set and get).
 
 **Example:**
+
 ```wat
 (func $example (result i32)
   (local $x i32)
@@ -54,6 +57,7 @@ Set the value of a local variable and return it (combination of set and get).
 Get the value of a global variable by name or index.
 
 **Example:**
+
 ```wat
 (global $counter (mut i32) (i32.const 0))
 
@@ -69,6 +73,7 @@ Get the value of a global variable by name or index.
 Set the value of a global variable by name or index. Only works on mutable globals.
 
 **Example:**
+
 ```wat
 (global $counter (mut i32) (i32.const 0))
 
@@ -79,4 +84,3 @@ Set the value of a global variable by name or index. Only works on mutable globa
 ```
 
 ---
-

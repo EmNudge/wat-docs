@@ -12,9 +12,7 @@ test.describe('CodeMirror Editor Integration', () => {
     await page.goto('/stack/drop/');
     await page.waitForTimeout(2000);
 
-    const criticalErrors = errors.filter(
-      (e) => !e.includes('SharedArrayBuffer')
-    );
+    const criticalErrors = errors.filter((e) => !e.includes('SharedArrayBuffer'));
 
     expect(criticalErrors).toEqual([]);
   });
@@ -74,9 +72,6 @@ test.describe('CodeMirror Editor Integration', () => {
 
     const cmEditor = page.locator('.cm-editor').first();
     await expect(cmEditor).toBeVisible({ timeout: 10000 });
-
-    // Get initial content
-    const initialContent = await cmEditor.locator('.cm-content').textContent();
 
     // Click to focus and type
     await cmEditor.click();
@@ -157,11 +152,11 @@ test.describe('CodeMirror Editor Integration', () => {
 
     // Check computed styles on editor elements including gutters
     const styles = await page.evaluate(() => {
-      const editor = document.querySelector('.cm-editor');
-      const scroller = document.querySelector('.cm-scroller');
+      const _editor = document.querySelector('.cm-editor');
+      const _scroller = document.querySelector('.cm-scroller');
       const content = document.querySelector('.cm-content');
       const line = document.querySelector('.cm-line');
-      const container = document.querySelector('.wat-editor-container');
+      const _container = document.querySelector('.wat-editor-container');
       const gutters = document.querySelector('.cm-gutters');
       const lineNumbers = document.querySelector('.cm-lineNumbers');
       const gutterElement = document.querySelector('.cm-gutterElement');
@@ -189,6 +184,6 @@ test.describe('CodeMirror Editor Integration', () => {
     });
 
     console.log('Computed styles:');
-    styles.forEach(s => s && console.log(JSON.stringify(s)));
+    styles.forEach((s) => s && console.log(JSON.stringify(s)));
   });
 });

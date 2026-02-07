@@ -3,7 +3,6 @@ title: Integer Comparisons
 description: eq, ne, lt/le/gt/ge with signed/unsigned variants.
 ---
 
-
 Comparisons push `i32` booleans (0 = false, 1 = true).
 
 ```wat
@@ -21,9 +20,8 @@ Comparisons push `i32` booleans (0 = false, 1 = true).
 - 64-bit variants: `i64.*`
 
 Reference:
+
 - [i32 Instructions](/instructions/i32) - Complete i32 instruction reference
 - [i64 Instructions](/instructions/i64) - Complete i64 instruction reference
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: comparisons in https://github.com/EmNudge/watlings
-
-

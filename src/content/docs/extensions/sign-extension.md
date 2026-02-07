@@ -1,8 +1,7 @@
 ---
-title: "Sign-extension Operators"
-description: "Extend smaller integer widths to larger ones with sign preservation."
+title: 'Sign-extension Operators'
+description: 'Extend smaller integer widths to larger ones with sign preservation.'
 ---
-
 
 These operators widen integers while preserving the sign of the smaller type.
 
@@ -28,5 +27,3 @@ References:
 - [i64 Instructions](/instructions/i64) - `i64.extend8_s`, `i64.extend16_s`, `i64.extend32_s`
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: integer ops in https://github.com/EmNudge/watlings
-
-

@@ -10,6 +10,7 @@ Atomically load a 32-bit integer from memory. Requires shared memory. The addres
 **Signature:** `(param i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically load i32 from address
 (i32.atomic.load (i32.const 0))
@@ -24,6 +25,7 @@ Atomically load a 64-bit integer from memory. Requires shared memory. The addres
 **Signature:** `(param i32) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically load i64 from address
 (i64.atomic.load (i32.const 0))
@@ -38,6 +40,7 @@ Atomically load an 8-bit value from memory and zero-extend to i32. Requires shar
 **Signature:** `(param i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically load byte and zero-extend to i32
 (i32.atomic.load8_u (i32.const 0))
@@ -52,6 +55,7 @@ Atomically load a 16-bit value from memory and zero-extend to i32. Requires shar
 **Signature:** `(param i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically load 16-bit value and zero-extend to i32
 (i32.atomic.load16_u (i32.const 0))
@@ -66,6 +70,7 @@ Atomically load an 8-bit value from memory and zero-extend to i64. Requires shar
 **Signature:** `(param i32) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically load byte and zero-extend to i64
 (i64.atomic.load8_u (i32.const 0))
@@ -80,6 +85,7 @@ Atomically load a 16-bit value from memory and zero-extend to i64. Requires shar
 **Signature:** `(param i32) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically load 16-bit value and zero-extend to i64
 (i64.atomic.load16_u (i32.const 0))
@@ -94,6 +100,7 @@ Atomically load a 32-bit value from memory and zero-extend to i64. Requires shar
 **Signature:** `(param i32) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically load 32-bit value and zero-extend to i64
 (i64.atomic.load32_u (i32.const 0))
@@ -108,6 +115,7 @@ Atomically store a 32-bit integer to memory. Requires shared memory. The address
 **Signature:** `(param i32 i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically store i32 value at address
 (i32.atomic.store (i32.const 0) (i32.const 42))
@@ -122,6 +130,7 @@ Atomically store a 64-bit integer to memory. Requires shared memory. The address
 **Signature:** `(param i32 i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically store i64 value at address
 (i64.atomic.store (i32.const 0) (i64.const 42))
@@ -136,6 +145,7 @@ Atomically store the low 8 bits of an i32 to memory. Requires shared memory.
 **Signature:** `(param i32 i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically store low byte of i32 at address
 (i32.atomic.store8 (i32.const 0) (i32.const 255))
@@ -150,6 +160,7 @@ Atomically store the low 16 bits of an i32 to memory. Requires shared memory. Th
 **Signature:** `(param i32 i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically store low 16 bits of i32 at address
 (i32.atomic.store16 (i32.const 0) (i32.const 1000))
@@ -164,6 +175,7 @@ Atomically store the low 8 bits of an i64 to memory. Requires shared memory.
 **Signature:** `(param i32 i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically store low byte of i64 at address
 (i64.atomic.store8 (i32.const 0) (i64.const 255))
@@ -178,6 +190,7 @@ Atomically store the low 16 bits of an i64 to memory. Requires shared memory. Th
 **Signature:** `(param i32 i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically store low 16 bits of i64 at address
 (i64.atomic.store16 (i32.const 0) (i64.const 1000))
@@ -192,6 +205,7 @@ Atomically store the low 32 bits of an i64 to memory. Requires shared memory. Th
 **Signature:** `(param i32 i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically store low 32 bits of i64 at address
 (i64.atomic.store32 (i32.const 0) (i64.const 100000))
@@ -206,6 +220,7 @@ Atomically read a 32-bit value, add to it, and store the result. Returns the ori
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically add 10 to value at address, return old value
 (i32.atomic.rmw.add (i32.const 0) (i32.const 10))
@@ -220,6 +235,7 @@ Atomically read a 32-bit value, subtract from it, and store the result. Returns 
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically subtract 5 from value at address, return old value
 (i32.atomic.rmw.sub (i32.const 0) (i32.const 5))
@@ -234,6 +250,7 @@ Atomically read a 32-bit value, perform bitwise AND, and store the result. Retur
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically AND with mask, return old value
 (i32.atomic.rmw.and (i32.const 0) (i32.const 0xFF))
@@ -248,6 +265,7 @@ Atomically read a 32-bit value, perform bitwise OR, and store the result. Return
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically OR with flags, return old value
 (i32.atomic.rmw.or (i32.const 0) (i32.const 0x80))
@@ -262,6 +280,7 @@ Atomically read a 32-bit value, perform bitwise XOR, and store the result. Retur
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically XOR with value, return old value
 (i32.atomic.rmw.xor (i32.const 0) (i32.const 0xFF))
@@ -276,6 +295,7 @@ Atomically exchange (swap) a 32-bit value in memory. Returns the original value.
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically swap value at address, return old value
 (i32.atomic.rmw.xchg (i32.const 0) (i32.const 100))
@@ -290,6 +310,7 @@ Atomically read a 64-bit value, add to it, and store the result. Returns the ori
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically add 10 to i64 value at address, return old value
 (i64.atomic.rmw.add (i32.const 0) (i64.const 10))
@@ -304,6 +325,7 @@ Atomically read a 64-bit value, subtract from it, and store the result. Returns 
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically subtract 5 from i64 value at address, return old value
 (i64.atomic.rmw.sub (i32.const 0) (i64.const 5))
@@ -318,6 +340,7 @@ Atomically read a 64-bit value, perform bitwise AND, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically AND with mask, return old value
 (i64.atomic.rmw.and (i32.const 0) (i64.const 0xFF))
@@ -332,6 +355,7 @@ Atomically read a 64-bit value, perform bitwise OR, and store the result. Return
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically OR with flags, return old value
 (i64.atomic.rmw.or (i32.const 0) (i64.const 0x80))
@@ -346,6 +370,7 @@ Atomically read a 64-bit value, perform bitwise XOR, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically XOR with value, return old value
 (i64.atomic.rmw.xor (i32.const 0) (i64.const 0xFF))
@@ -360,6 +385,7 @@ Atomically exchange (swap) a 64-bit value in memory. Returns the original value.
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically swap i64 value at address, return old value
 (i64.atomic.rmw.xchg (i32.const 0) (i64.const 100))
@@ -374,6 +400,7 @@ Atomically read an 8-bit value, add to it, and store the result. Returns the ori
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically add to byte at address, return old value
 (i32.atomic.rmw8.add_u (i32.const 0) (i32.const 1))
@@ -388,6 +415,7 @@ Atomically read an 8-bit value, subtract from it, and store the result. Returns 
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically subtract from byte at address, return old value
 (i32.atomic.rmw8.sub_u (i32.const 0) (i32.const 1))
@@ -402,6 +430,7 @@ Atomically read an 8-bit value, perform bitwise AND, and store the result. Retur
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically AND byte at address with mask, return old value
 (i32.atomic.rmw8.and_u (i32.const 0) (i32.const 0x0F))
@@ -416,6 +445,7 @@ Atomically read an 8-bit value, perform bitwise OR, and store the result. Return
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically OR byte at address with flags, return old value
 (i32.atomic.rmw8.or_u (i32.const 0) (i32.const 0x80))
@@ -430,6 +460,7 @@ Atomically read an 8-bit value, perform bitwise XOR, and store the result. Retur
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically XOR byte at address, return old value
 (i32.atomic.rmw8.xor_u (i32.const 0) (i32.const 0xFF))
@@ -444,6 +475,7 @@ Atomically exchange an 8-bit value in memory. Returns the original value zero-ex
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically swap byte at address, return old value
 (i32.atomic.rmw8.xchg_u (i32.const 0) (i32.const 42))
@@ -458,6 +490,7 @@ Atomically read a 16-bit value, add to it, and store the result. Returns the ori
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically add to 16-bit value at address, return old value
 (i32.atomic.rmw16.add_u (i32.const 0) (i32.const 100))
@@ -472,6 +505,7 @@ Atomically read a 16-bit value, subtract from it, and store the result. Returns 
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically subtract from 16-bit value at address, return old value
 (i32.atomic.rmw16.sub_u (i32.const 0) (i32.const 100))
@@ -486,6 +520,7 @@ Atomically read a 16-bit value, perform bitwise AND, and store the result. Retur
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically AND 16-bit value at address with mask, return old value
 (i32.atomic.rmw16.and_u (i32.const 0) (i32.const 0x00FF))
@@ -500,6 +535,7 @@ Atomically read a 16-bit value, perform bitwise OR, and store the result. Return
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically OR 16-bit value at address with flags, return old value
 (i32.atomic.rmw16.or_u (i32.const 0) (i32.const 0x8000))
@@ -514,6 +550,7 @@ Atomically read a 16-bit value, perform bitwise XOR, and store the result. Retur
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically XOR 16-bit value at address, return old value
 (i32.atomic.rmw16.xor_u (i32.const 0) (i32.const 0xFFFF))
@@ -528,6 +565,7 @@ Atomically exchange a 16-bit value in memory. Returns the original value zero-ex
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Atomically swap 16-bit value at address, return old value
 (i32.atomic.rmw16.xchg_u (i32.const 0) (i32.const 1000))
@@ -542,6 +580,7 @@ Atomically read an 8-bit value, add to it, and store the result. Returns the ori
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically add to byte at address, return old value as i64
 (i64.atomic.rmw8.add_u (i32.const 0) (i64.const 1))
@@ -556,6 +595,7 @@ Atomically read an 8-bit value, subtract from it, and store the result. Returns 
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically subtract from byte at address, return old value as i64
 (i64.atomic.rmw8.sub_u (i32.const 0) (i64.const 1))
@@ -570,6 +610,7 @@ Atomically read an 8-bit value, perform bitwise AND, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically AND byte at address with mask, return old value as i64
 (i64.atomic.rmw8.and_u (i32.const 0) (i64.const 0x0F))
@@ -584,6 +625,7 @@ Atomically read an 8-bit value, perform bitwise OR, and store the result. Return
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically OR byte at address with flags, return old value as i64
 (i64.atomic.rmw8.or_u (i32.const 0) (i64.const 0x80))
@@ -598,6 +640,7 @@ Atomically read an 8-bit value, perform bitwise XOR, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically XOR byte at address, return old value as i64
 (i64.atomic.rmw8.xor_u (i32.const 0) (i64.const 0xFF))
@@ -612,6 +655,7 @@ Atomically exchange an 8-bit value in memory. Returns the original value zero-ex
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically swap byte at address, return old value as i64
 (i64.atomic.rmw8.xchg_u (i32.const 0) (i64.const 42))
@@ -626,6 +670,7 @@ Atomically read a 16-bit value, add to it, and store the result. Returns the ori
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically add to 16-bit value at address, return old value as i64
 (i64.atomic.rmw16.add_u (i32.const 0) (i64.const 100))
@@ -640,6 +685,7 @@ Atomically read a 16-bit value, subtract from it, and store the result. Returns 
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically subtract from 16-bit value at address, return old value as i64
 (i64.atomic.rmw16.sub_u (i32.const 0) (i64.const 100))
@@ -654,6 +700,7 @@ Atomically read a 16-bit value, perform bitwise AND, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically AND 16-bit value at address with mask, return old value as i64
 (i64.atomic.rmw16.and_u (i32.const 0) (i64.const 0x00FF))
@@ -668,6 +715,7 @@ Atomically read a 16-bit value, perform bitwise OR, and store the result. Return
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically OR 16-bit value at address with flags, return old value as i64
 (i64.atomic.rmw16.or_u (i32.const 0) (i64.const 0x8000))
@@ -682,6 +730,7 @@ Atomically read a 16-bit value, perform bitwise XOR, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically XOR 16-bit value at address, return old value as i64
 (i64.atomic.rmw16.xor_u (i32.const 0) (i64.const 0xFFFF))
@@ -696,6 +745,7 @@ Atomically exchange a 16-bit value in memory. Returns the original value zero-ex
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically swap 16-bit value at address, return old value as i64
 (i64.atomic.rmw16.xchg_u (i32.const 0) (i64.const 1000))
@@ -710,6 +760,7 @@ Atomically read a 32-bit value, add to it, and store the result. Returns the ori
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically add to 32-bit value at address, return old value as i64
 (i64.atomic.rmw32.add_u (i32.const 0) (i64.const 1000))
@@ -724,6 +775,7 @@ Atomically read a 32-bit value, subtract from it, and store the result. Returns 
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically subtract from 32-bit value at address, return old value as i64
 (i64.atomic.rmw32.sub_u (i32.const 0) (i64.const 1000))
@@ -738,6 +790,7 @@ Atomically read a 32-bit value, perform bitwise AND, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically AND 32-bit value at address with mask, return old value as i64
 (i64.atomic.rmw32.and_u (i32.const 0) (i64.const 0xFFFF0000))
@@ -752,6 +805,7 @@ Atomically read a 32-bit value, perform bitwise OR, and store the result. Return
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically OR 32-bit value at address with flags, return old value as i64
 (i64.atomic.rmw32.or_u (i32.const 0) (i64.const 0x80000000))
@@ -766,6 +820,7 @@ Atomically read a 32-bit value, perform bitwise XOR, and store the result. Retur
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically XOR 32-bit value at address, return old value as i64
 (i64.atomic.rmw32.xor_u (i32.const 0) (i64.const 0xFFFFFFFF))
@@ -780,6 +835,7 @@ Atomically exchange a 32-bit value in memory. Returns the original value zero-ex
 **Signature:** `(param i32 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Atomically swap 32-bit value at address, return old value as i64
 (i64.atomic.rmw32.xchg_u (i32.const 0) (i64.const 100000))
@@ -794,6 +850,7 @@ Atomically compare and exchange a 32-bit value. If the value at the address equa
 **Signature:** `(param i32 i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Compare and exchange: if [addr] == expected, set to replacement
 ;; Returns original value at address
@@ -812,6 +869,7 @@ Atomically compare and exchange a 64-bit value. If the value at the address equa
 **Signature:** `(param i32 i64 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Compare and exchange: if [addr] == expected, set to replacement
 ;; Returns original value at address
@@ -830,6 +888,7 @@ Atomically compare and exchange an 8-bit value. If the value at the address equa
 **Signature:** `(param i32 i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Compare and exchange byte: if [addr] == expected, set to replacement
 (i32.atomic.rmw8.cmpxchg_u
@@ -847,6 +906,7 @@ Atomically compare and exchange a 16-bit value. If the value at the address equa
 **Signature:** `(param i32 i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Compare and exchange 16-bit: if [addr] == expected, set to replacement
 (i32.atomic.rmw16.cmpxchg_u
@@ -864,6 +924,7 @@ Atomically compare and exchange an 8-bit value. If the value at the address equa
 **Signature:** `(param i32 i64 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Compare and exchange byte: if [addr] == expected, set to replacement
 (i64.atomic.rmw8.cmpxchg_u
@@ -881,6 +942,7 @@ Atomically compare and exchange a 16-bit value. If the value at the address equa
 **Signature:** `(param i32 i64 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Compare and exchange 16-bit: if [addr] == expected, set to replacement
 (i64.atomic.rmw16.cmpxchg_u
@@ -898,6 +960,7 @@ Atomically compare and exchange a 32-bit value. If the value at the address equa
 **Signature:** `(param i32 i64 i64) (result i64)`
 
 **Example:**
+
 ```wat
 ;; Compare and exchange 32-bit: if [addr] == expected, set to replacement
 (i64.atomic.rmw32.cmpxchg_u
@@ -915,6 +978,7 @@ Suspend the current thread until notified or timeout. The thread waits if the 32
 **Signature:** `(param i32 i32 i64) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Wait on address until value changes or timeout
 ;; Returns: 0 = woken, 1 = not equal, 2 = timed out
@@ -933,6 +997,7 @@ Suspend the current thread until notified or timeout. The thread waits if the 64
 **Signature:** `(param i32 i64 i64) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Wait on address until 64-bit value changes or timeout
 ;; Returns: 0 = woken, 1 = not equal, 2 = timed out
@@ -951,6 +1016,7 @@ Wake up threads waiting on an address. Returns the number of threads that were w
 **Signature:** `(param i32 i32) (result i32)`
 
 **Example:**
+
 ```wat
 ;; Wake up to 1 waiter at address
 (memory.atomic.notify
@@ -967,10 +1033,10 @@ Ensure memory ordering between atomic and non-atomic operations. This is a seque
 **Signature:** `()`
 
 **Example:**
+
 ```wat
 ;; Memory fence for ordering guarantees
 (atomic.fence)
 ```
 
 ---
-

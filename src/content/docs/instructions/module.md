@@ -8,6 +8,7 @@ description: Module definition constructs
 Declares a WebAssembly module. Top-level container for all declarations.
 
 **Example:**
+
 ```wat
 (module $my_module
   ;; Module contents here
@@ -24,6 +25,7 @@ Declares a WebAssembly module. Top-level container for all declarations.
 Declares a function with optional name, parameters, results, and locals.
 
 **Example:**
+
 ```wat
 ;; Named function with params and result
 (func $add (param $a i32) (param $b i32) (result i32)
@@ -45,6 +47,7 @@ Declares a function with optional name, parameters, results, and locals.
 Declares a function parameter with optional name and type.
 
 **Example:**
+
 ```wat
 (func $example
   (param $x i32)
@@ -61,6 +64,7 @@ Declares a function parameter with optional name and type.
 Declares function result type(s).
 
 **Example:**
+
 ```wat
 (func $single (result i32)
   (i32.const 42))
@@ -78,6 +82,7 @@ Declares function result type(s).
 Declares a local variable with optional name and type.
 
 **Example:**
+
 ```wat
 (func $example
   (local $counter i32)
@@ -94,6 +99,7 @@ Declares a local variable with optional name and type.
 Declares a global variable with type, mutability, and initial value.
 
 **Example:**
+
 ```wat
 ;; Immutable global
 (global $pi f64 (f64.const 3.14159))
@@ -112,6 +118,7 @@ Declares a global variable with type, mutability, and initial value.
 Declares a table for storing references.
 
 **Example:**
+
 ```wat
 ;; Table with size 10
 (table $funcs 10 funcref)
@@ -130,6 +137,7 @@ Declares a table for storing references.
 Declares linear memory for the module.
 
 **Example:**
+
 ```wat
 ;; 1 page minimum
 (memory $mem 1)
@@ -148,6 +156,7 @@ Declares linear memory for the module.
 Imports an external resource (function, global, table, or memory).
 
 **Example:**
+
 ```wat
 ;; Import function
 (import "env" "log" (func $log (param i32)))
@@ -169,6 +178,7 @@ Imports an external resource (function, global, table, or memory).
 Exports a resource for use by the host.
 
 **Example:**
+
 ```wat
 ;; Export function
 (export "add" (func $add))
@@ -191,6 +201,7 @@ Exports a resource for use by the host.
 Declares a function to be called automatically when the module is instantiated.
 
 **Example:**
+
 ```wat
 (module
   (func $init
@@ -210,6 +221,7 @@ Declares a function to be called automatically when the module is instantiated.
 Declares a function type that can be referenced elsewhere.
 
 **Example:**
+
 ```wat
 ;; Define a binary operation type
 (type $binop (func (param i32 i32) (result i32)))
@@ -232,6 +244,7 @@ Declares a function type that can be referenced elsewhere.
 Declares elements for a table.
 
 **Example:**
+
 ```wat
 (table $funcs 10 funcref)
 
@@ -252,6 +265,7 @@ Declares elements for a table.
 Declares data to be loaded into memory.
 
 **Example:**
+
 ```wat
 (memory 1)
 
@@ -266,4 +280,3 @@ Declares data to be loaded into memory.
 ```
 
 ---
-

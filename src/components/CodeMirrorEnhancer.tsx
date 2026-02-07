@@ -1,12 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { EditorState } from '@codemirror/state';
-import { EditorView, keymap, lineNumbers, highlightActiveLine, highlightActiveLineGutter, hoverTooltip } from '@codemirror/view';
+import {
+  EditorView,
+  keymap,
+  lineNumbers,
+  highlightActiveLine,
+  highlightActiveLineGutter,
+  hoverTooltip,
+} from '@codemirror/view';
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
 import { syntaxHighlighting, HighlightStyle, StreamLanguage } from '@codemirror/language';
 import { linter } from '@codemirror/lint';
 import { tags } from '@lezer/highlight';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { createWatLSP } from '@emnudge/wat-lsp';
+import treeSitterWasmUrl from '@emnudge/wat-lsp/wasm/tree-sitter.wasm?url';
+import watLspWasmUrl from '@emnudge/wat-lsp/wasm/wat_lsp_rust_bg.wasm?url';
 
 // WAT language definition for CodeMirror StreamLanguage
 const watLanguage = StreamLanguage.define({
@@ -53,7 +62,9 @@ const watLanguage = StreamLanguage.define({
     }
 
     // Instructions with dot notation (i32.add, local.get, etc.)
-    if (stream.match(/(i32|i64|f32|f64|v128|i8x16|i16x8|i32x4|i64x2|f32x4|f64x2)\.[a-z_][a-z0-9_]*/)) {
+    if (
+      stream.match(/(i32|i64|f32|f64|v128|i8x16|i16x8|i32x4|i64x2|f32x4|f64x2)\.[a-z_][a-z0-9_]*/)
+    ) {
       return 'keyword';
     }
     if (stream.match(/(local|global|memory|table|ref|struct|array|i31)\.[a-z_][a-z0-9_]*/)) {
@@ -61,12 +72,20 @@ const watLanguage = StreamLanguage.define({
     }
 
     // Type keywords
-    if (stream.match(/\b(i32|i64|f32|f64|v128|funcref|externref|anyref|eqref|i31ref|structref|arrayref)\b/)) {
+    if (
+      stream.match(
+        /\b(i32|i64|f32|f64|v128|funcref|externref|anyref|eqref|i31ref|structref|arrayref)\b/,
+      )
+    ) {
       return 'typeName';
     }
 
     // Keywords
-    if (stream.match(/\b(module|func|param|result|local|global|table|memory|type|import|export|start|elem|data|offset|declare|item|field|mut|block|loop|if|then|else|end|br|br_if|br_table|return|call|call_indirect|call_ref|drop|select|unreachable|nop|ref|null|struct|array|rec|sub|final|tag|try|catch|throw)\b/)) {
+    if (
+      stream.match(
+        /\b(module|func|param|result|local|global|table|memory|type|import|export|start|elem|data|offset|declare|item|field|mut|block|loop|if|then|else|end|br|br_if|br_table|return|call|call_indirect|call_ref|drop|select|unreachable|nop|ref|null|struct|array|rec|sub|final|tag|try|catch|throw)\b/,
+      )
+    ) {
       return 'keyword';
     }
 
@@ -215,10 +234,7 @@ const customTheme = EditorView.theme({
 
 // Helper to escape HTML
 function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 // Token colors matching the editor theme
@@ -236,88 +252,94 @@ const tokenColors: Record<string, string> = {
 // Simple WAT syntax highlighter for tooltips
 function highlightWatCode(code: string): string {
   const lines = code.split('\n');
-  return lines.map(line => {
-    let result = '';
-    let i = 0;
+  return lines
+    .map((line) => {
+      let result = '';
+      let i = 0;
 
-    while (i < line.length) {
-      // Skip whitespace
-      if (/\s/.test(line[i])) {
-        result += line[i];
-        i++;
-        continue;
-      }
-
-      // Line comment
-      if (line.slice(i, i + 2) === ';;') {
-        result += `<span style="color:${tokenColors.comment}">${escapeHtml(line.slice(i))}</span>`;
-        break;
-      }
-
-      // String
-      if (line[i] === '"') {
-        let end = i + 1;
-        while (end < line.length && (line[end] !== '"' || line[end - 1] === '\\')) end++;
-        end++;
-        result += `<span style="color:${tokenColors.string}">${escapeHtml(line.slice(i, end))}</span>`;
-        i = end;
-        continue;
-      }
-
-      // Parentheses
-      if (line[i] === '(' || line[i] === ')') {
-        result += `<span style="color:${tokenColors.bracket}">${line[i]}</span>`;
-        i++;
-        continue;
-      }
-
-      // Identifier starting with $
-      if (line[i] === '$') {
-        let end = i + 1;
-        while (end < line.length && /[a-zA-Z0-9_]/.test(line[end])) end++;
-        result += `<span style="color:${tokenColors.variableName}">${escapeHtml(line.slice(i, end))}</span>`;
-        i = end;
-        continue;
-      }
-
-      // Words (keywords, types, instructions)
-      if (/[a-zA-Z_]/.test(line[i])) {
-        let end = i;
-        while (end < line.length && /[a-zA-Z0-9_.]/.test(line[end])) end++;
-        const word = line.slice(i, end);
-
-        // Check token type
-        let color = tokenColors.name;
-        if (/^(i32|i64|f32|f64|v128|funcref|externref|anyref)$/.test(word)) {
-          color = tokenColors.typeName;
-        } else if (/^(module|func|param|result|local|global|table|memory|type|import|export|block|loop|if|then|else|end|br|br_if|return|call|drop|select|unreachable|nop)$/.test(word)) {
-          color = tokenColors.keyword;
-        } else if (/\.(get|set|const|add|sub|mul|div|load|store|eq|ne|lt|gt|le|ge)/.test(word)) {
-          color = tokenColors.keyword;
+      while (i < line.length) {
+        // Skip whitespace
+        if (/\s/.test(line[i])) {
+          result += line[i];
+          i++;
+          continue;
         }
 
-        result += `<span style="color:${color}">${escapeHtml(word)}</span>`;
-        i = end;
-        continue;
+        // Line comment
+        if (line.slice(i, i + 2) === ';;') {
+          result += `<span style="color:${tokenColors.comment}">${escapeHtml(line.slice(i))}</span>`;
+          break;
+        }
+
+        // String
+        if (line[i] === '"') {
+          let end = i + 1;
+          while (end < line.length && (line[end] !== '"' || line[end - 1] === '\\')) end++;
+          end++;
+          result += `<span style="color:${tokenColors.string}">${escapeHtml(line.slice(i, end))}</span>`;
+          i = end;
+          continue;
+        }
+
+        // Parentheses
+        if (line[i] === '(' || line[i] === ')') {
+          result += `<span style="color:${tokenColors.bracket}">${line[i]}</span>`;
+          i++;
+          continue;
+        }
+
+        // Identifier starting with $
+        if (line[i] === '$') {
+          let end = i + 1;
+          while (end < line.length && /[a-zA-Z0-9_]/.test(line[end])) end++;
+          result += `<span style="color:${tokenColors.variableName}">${escapeHtml(line.slice(i, end))}</span>`;
+          i = end;
+          continue;
+        }
+
+        // Words (keywords, types, instructions)
+        if (/[a-zA-Z_]/.test(line[i])) {
+          let end = i;
+          while (end < line.length && /[a-zA-Z0-9_.]/.test(line[end])) end++;
+          const word = line.slice(i, end);
+
+          // Check token type
+          let color = tokenColors.name;
+          if (/^(i32|i64|f32|f64|v128|funcref|externref|anyref)$/.test(word)) {
+            color = tokenColors.typeName;
+          } else if (
+            /^(module|func|param|result|local|global|table|memory|type|import|export|block|loop|if|then|else|end|br|br_if|return|call|drop|select|unreachable|nop)$/.test(
+              word,
+            )
+          ) {
+            color = tokenColors.keyword;
+          } else if (/\.(get|set|const|add|sub|mul|div|load|store|eq|ne|lt|gt|le|ge)/.test(word)) {
+            color = tokenColors.keyword;
+          }
+
+          result += `<span style="color:${color}">${escapeHtml(word)}</span>`;
+          i = end;
+          continue;
+        }
+
+        // Numbers
+        if (/[0-9]/.test(line[i]) || (line[i] === '-' && /[0-9]/.test(line[i + 1]))) {
+          let end = i;
+          if (line[end] === '-') end++;
+          while (end < line.length && /[0-9a-fA-Fx_.]/.test(line[end])) end++;
+          result += `<span style="color:${tokenColors.number}">${escapeHtml(line.slice(i, end))}</span>`;
+          i = end;
+          continue;
+        }
+
+        // Default
+        result += escapeHtml(line[i]);
+        i++;
       }
 
-      // Numbers
-      if (/[0-9]/.test(line[i]) || (line[i] === '-' && /[0-9]/.test(line[i + 1]))) {
-        let end = i;
-        if (line[end] === '-') end++;
-        while (end < line.length && /[0-9a-fA-Fx_.]/.test(line[end])) end++;
-        result += `<span style="color:${tokenColors.number}">${escapeHtml(line.slice(i, end))}</span>`;
-        i = end;
-        continue;
-      }
-
-      // Default
-      result += escapeHtml(line[i]);
-      i++;
-    }
-
-    return result;
-  }).join('\n');
+      return result;
+    })
+    .join('\n');
 }
 
 // Global LSP instance
@@ -331,8 +353,8 @@ async function initLSP() {
   lspInitPromise = (async () => {
     try {
       watLSP = await createWatLSP({
-        treeSitterWasmPath: '/tree-sitter.wasm',
-        watLspWasmPath: '/wat_lsp_rust_bg.wasm',
+        treeSitterWasmPath: treeSitterWasmUrl,
+        watLspWasmPath: watLspWasmUrl,
       });
       console.log('WAT LSP initialized');
       return watLSP;
@@ -347,14 +369,14 @@ async function initLSP() {
 
 // Create hover tooltip using LSP
 function createLSPHover() {
-  return hoverTooltip(async (view, pos, side) => {
+  return hoverTooltip(async (view, pos, _side) => {
     const lsp = await initLSP();
     if (!lsp?.ready) return null;
 
     const doc = view.state.doc;
     const lineInfo = doc.lineAt(pos);
     const line = lineInfo.number - 1; // LSP uses 0-indexed lines
-    const col = pos - lineInfo.from;  // Column within line
+    const col = pos - lineInfo.from; // Column within line
 
     const content = doc.toString();
     lsp.parse(content);
@@ -373,11 +395,12 @@ function createLSPHover() {
         let text = hover.contents.value;
 
         // Convert code blocks ```lang ... ``` to <pre><code> with syntax highlighting
-        text = text.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
+        text = text.replace(/```(\w*)\n([\s\S]*?)```/g, (_: string, lang: string, code: string) => {
           const trimmed = code.trim();
-          const highlighted = (lang === 'wat' || lang === 'wast' || lang === '')
-            ? highlightWatCode(trimmed)
-            : escapeHtml(trimmed);
+          const highlighted =
+            lang === 'wat' || lang === 'wast' || lang === ''
+              ? highlightWatCode(trimmed)
+              : escapeHtml(trimmed);
           return `<pre class="cm-tooltip-codeblock"><code>${highlighted}</code></pre>`;
         });
 
@@ -386,10 +409,12 @@ function createLSPHover() {
 
         // Convert newlines to <br> (but not inside pre blocks)
         const parts = text.split(/(<pre[\s\S]*?<\/pre>)/);
-        text = parts.map((part, i) => {
-          if (part.startsWith('<pre')) return part;
-          return part.replace(/\n/g, '<br>');
-        }).join('');
+        text = parts
+          .map((part: string, _i: number) => {
+            if (part.startsWith('<pre')) return part;
+            return part.replace(/\n/g, '<br>');
+          })
+          .join('');
 
         dom.innerHTML = text;
         return { dom };
@@ -400,33 +425,36 @@ function createLSPHover() {
 
 // Create linter using LSP diagnostics
 function createLSPLinter() {
-  return linter(async (view) => {
-    const lsp = await initLSP();
-    if (!lsp?.ready) return [];
+  return linter(
+    async (view) => {
+      const lsp = await initLSP();
+      if (!lsp?.ready) return [];
 
-    const content = view.state.doc.toString();
-    lsp.parse(content);
+      const content = view.state.doc.toString();
+      lsp.parse(content);
 
-    const diagnostics = lsp.provideDiagnostics();
-    if (!diagnostics?.length) return [];
+      const diagnostics = lsp.provideDiagnostics();
+      if (!diagnostics?.length) return [];
 
-    return diagnostics.map((diag: any) => {
-      const startLine = view.state.doc.line(diag.range.start.line + 1);
-      const endLine = view.state.doc.line(diag.range.end.line + 1);
+      return diagnostics.map((diag: any) => {
+        const startLine = view.state.doc.line(diag.range.start.line + 1);
+        const endLine = view.state.doc.line(diag.range.end.line + 1);
 
-      const from = startLine.from + diag.range.start.character;
-      const to = endLine.from + diag.range.end.character;
+        const from = startLine.from + diag.range.start.character;
+        const to = endLine.from + diag.range.end.character;
 
-      return {
-        from: Math.min(from, view.state.doc.length),
-        to: Math.min(to, view.state.doc.length),
-        severity: diag.severity === 1 ? 'error' : diag.severity === 2 ? 'warning' : 'info',
-        message: diag.message,
-      };
-    });
-  }, {
-    delay: 300,
-  });
+        return {
+          from: Math.min(from, view.state.doc.length),
+          to: Math.min(to, view.state.doc.length),
+          severity: diag.severity === 1 ? 'error' : diag.severity === 2 ? 'warning' : 'info',
+          message: diag.message,
+        };
+      });
+    },
+    {
+      delay: 300,
+    },
+  );
 }
 
 // Check if current page should have diagnostics (not instruction reference pages)
@@ -445,7 +473,9 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
   let code = '';
 
   if (lines.length > 0) {
-    code = Array.from(lines).map(line => line.textContent || '').join('\n');
+    code = Array.from(lines)
+      .map((line) => line.textContent || '')
+      .join('\n');
   } else {
     const codeEl = wrapper.querySelector('code');
     code = codeEl?.textContent || '';
@@ -505,9 +535,7 @@ async function enhanceAllWatBlocks() {
   // Start LSP initialization early
   initLSP();
 
-  const pres = document.querySelectorAll(
-    'pre[data-language="wat"], pre[data-language="wast"]'
-  );
+  const pres = document.querySelectorAll('pre[data-language="wat"], pre[data-language="wast"]');
 
   for (const pre of pres) {
     const wrapper = pre.closest('.expressive-code');

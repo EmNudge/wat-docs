@@ -3,7 +3,6 @@ title: select
 description: Choose between two stack values based on an i32 condition.
 ---
 
-
 `select` pops three values: `a`, `b`, and a condition `c`. It pushes `a` if `c != 0`, else `b`. Both `a` and `b` must share the same type.
 
 ```wat
@@ -28,5 +27,3 @@ Further reading:
 - [Parametric Instructions](/instructions/parametric) - Complete reference for `drop`, `select`
 - Spec: [Parametric select](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: try conditional computations in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
-
-

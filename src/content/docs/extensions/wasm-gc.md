@@ -1,6 +1,6 @@
 ---
-title: "Garbage Collection (WasmGC)"
-description: "Low-level primitives for managed structs/arrays to support GC languages."
+title: 'Garbage Collection (WasmGC)'
+description: 'Low-level primitives for managed structs/arrays to support GC languages.'
 ---
 
 WasmGC provides reference-typed objects (structs, arrays) that engines can manage with garbage collection. This enables efficient runtimes for languages like Kotlin/Java/Dart.
@@ -22,5 +22,3 @@ References:
 - [GC Casts](/instructions/gc-casts) - `ref.test`, `ref.cast`, `br_on_cast`, etc.
 - Spec overview (evolving proposals): https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: higher-level runtimes often showcased outside of watlings, but see https://github.com/EmNudge/watlings for fundamentals
-
-
