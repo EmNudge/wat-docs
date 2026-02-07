@@ -51,6 +51,7 @@ const categories = {
         'call_indirect',
         'return',
         'return_call',
+        'return_call_indirect',
         'unreachable',
         'nop',
         'call_ref',
