@@ -3,6 +3,7 @@ title: Interfacing with Hosts
 description: Import functions, export APIs, and share memory to call WAT modules from JavaScript and other hosts.
 ---
 
+
 Most real programs talk to a host (like JavaScript) via imports/exports and linear memory.
 
 For authoritative syntax and semantics, see the [WebAssembly spec — Structure → Modules, Imports, Exports, Memories](https://webassembly.github.io/spec/core/syntax/index.html).
@@ -116,8 +117,16 @@ To call back and forth with function references:
 
 From JS, you can also supply host funcs via imports and store them in tables if desired.
 
+## Instruction Reference
+
+For complete instruction documentation:
+- [Module Structure](/instructions/module) - `module`, `func`, `import`, `export`, `memory`, `table`, etc.
+- [Memory Instructions](/instructions/memory) - `memory.size`, `memory.grow`, etc.
+- [Table Instructions](/instructions/table) - `table.get`, `table.set`, `table.grow`, etc.
+- [Control Flow Instructions](/instructions/control) - `call`, `call_indirect`, etc.
+
 ## Tooling note
 
-This site assumes you’re working in WAT. For learn-by-doing exercises and a `wasm-tools`-based workflow, try [watlings](https://github.com/EmNudge/watlings). Its scripts rely on `wasm-tools parse` to assemble WAT to Wasm.
+This site assumes you're working in WAT. For learn-by-doing exercises and a `wasm-tools`-based workflow, try [watlings](https://github.com/EmNudge/watlings). Its scripts rely on `wasm-tools parse` to assemble WAT to Wasm.
 
 

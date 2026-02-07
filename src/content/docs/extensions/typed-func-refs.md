@@ -3,6 +3,7 @@ title: "Typed Function References"
 description: "Precise typing for function references and call_ref."
 ---
 
+
 Typed function references make function refs carry specific types and enable `call_ref`.
 
 ```wat
@@ -26,6 +27,8 @@ Typed function references make function refs carry specific types and enable `ca
 
 References:
 
+- [Control Flow Instructions](/instructions/control) - `call_ref`, `return_call_ref`, `br_on_null`, `br_on_non_null`
+- [Reference Instructions](/instructions/reference) - `ref.func`, `ref.null`, `ref.is_null`, `ref.as_non_null`
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: dispatch patterns in https://github.com/EmNudge/watlings
 

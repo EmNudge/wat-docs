@@ -3,6 +3,7 @@ title: Operators
 description: The essential WAT instructions for arithmetic, comparison, locals, and control flow.
 ---
 
+
 At its core, WebAssembly is a stack machine. Most instructions pop their operands from the stack and push results back. Below are the operators you’ll reach for most often.
 
 For full instruction lists and exact rules, see the [WebAssembly spec — Structure → Instructions](https://webassembly.github.io/spec/core/syntax/index.html).
@@ -120,6 +121,16 @@ Notes:
 - `br_if $label` pops a condition; branch if non-zero.
 
 See the spec for precise typing rules and structured control forms: [WebAssembly spec — Instructions](https://webassembly.github.io/spec/core/syntax/index.html).
+
+## Instruction Reference
+
+For complete instruction documentation with signatures and examples:
+- [i32 Instructions](/instructions/i32) - All 32-bit integer operations
+- [i64 Instructions](/instructions/i64) - All 64-bit integer operations
+- [f32 Instructions](/instructions/f32) - All 32-bit float operations
+- [f64 Instructions](/instructions/f64) - All 64-bit float operations
+- [Local & Global](/instructions/local-global) - `local.get`, `local.set`, `local.tee`, `global.get`, `global.set`
+- [Control Flow](/instructions/control) - `block`, `loop`, `if`, `br`, `br_if`, `call`, etc.
 
 ## Practice
 

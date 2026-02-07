@@ -3,6 +3,7 @@ title: "Exception Handling"
 description: "Try/catch/throw for native exception support in Wasm."
 ---
 
+
 Exception handling introduces `try`, `catch`, `throw`, and related constructs for structured error handling.
 
 ```wat
@@ -31,6 +32,7 @@ Exception handling introduces `try`, `catch`, `throw`, and related constructs fo
 
 References:
 
+- [Exception Instructions](/instructions/exceptions) - Complete reference for `throw`, `throw_ref`, `rethrow`, `tag`, `try_table`, `catch`, `catch_all`, etc.
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: error control in https://github.com/EmNudge/watlings
 

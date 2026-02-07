@@ -3,6 +3,7 @@ title: "Extended Constant Expressions"
 description: "Richer constant initializers for globals, tables, and element/data offsets."
 ---
 
+
 Extended const expressions allow more forms in places that require constants, like global initializers and element/data offsets.
 
 ## global.get in initializers
@@ -28,6 +29,9 @@ Extended const expressions allow more forms in places that require constants, li
 
 References:
 
+- [Local & Global Instructions](/instructions/local-global) - `global.get`
+- [Reference Instructions](/instructions/reference) - `ref.func`, `ref.null`
+- [Module Structure](/instructions/module) - `global`, `elem`, `data`
 - Spec (syntax): https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: globals/tables in https://github.com/EmNudge/watlings
 

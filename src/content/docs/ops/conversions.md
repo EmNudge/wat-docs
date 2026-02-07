@@ -3,6 +3,7 @@ title: Conversions
 description: Int/float conversions, extend/wrap, promote/demote, trunc/convert.
 ---
 
+
 Common conversions:
 
 ```wat
@@ -26,6 +27,10 @@ Families:
 See also Non-trapping conversions in Extensions for saturating ops.
 
 Reference:
+- [i32 Instructions](/instructions/i32) - i32 conversions (`wrap`, `trunc`, `extend`, `reinterpret`)
+- [i64 Instructions](/instructions/i64) - i64 conversions
+- [f32 Instructions](/instructions/f32) - f32 conversions (`convert`, `demote`, `reinterpret`)
+- [f64 Instructions](/instructions/f64) - f64 conversions (`convert`, `promote`, `reinterpret`)
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: conversions in https://github.com/EmNudge/watlings
 

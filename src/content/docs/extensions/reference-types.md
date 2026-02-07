@@ -10,6 +10,9 @@ This extension lets Wasm store references to host objects (`externref`) and intr
 
 References:
 
+- [Reference Instructions](/instructions/reference) - `ref.null`, `ref.func`, `ref.is_null`, etc.
+- [Table Instructions](/instructions/table) - `table.get`, `table.set`, etc.
+- [Type Names](/instructions/types) - `funcref`, `externref`, etc.
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: function tables in https://github.com/EmNudge/watlings
 

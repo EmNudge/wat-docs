@@ -3,6 +3,7 @@ title: "if / else"
 description: Conditional execution with optional result values.
 ---
 
+
 `if` consumes a condition (`i32`: 0 = false, non-zero = true). Both branches must match result types if present.
 
 ```wat
@@ -27,6 +28,7 @@ Patterns:
 
 Further reading:
 
+- [Control Flow Instructions](/instructions/control) - Complete reference for `block`, `loop`, `if`, `br`, `br_if`, etc.
 - Spec: [If and block typing](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: conditionals in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 

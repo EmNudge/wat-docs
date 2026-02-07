@@ -3,6 +3,7 @@ title: "Multi-value"
 description: "Functions and blocks can produce multiple results; blocks can take parameters."
 ---
 
+
 ## Functions returning multiple values
 
 ```wat
@@ -30,6 +31,8 @@ description: "Functions and blocks can produce multiple results; blocks can take
 
 References:
 
+- [Module Structure](/instructions/module) - `func`, `param`, `result`
+- [Control Flow Instructions](/instructions/control) - `block`, `loop`, `if` with multiple results
 - Spec: https://webassembly.github.io/spec/core/syntax/index.html
 - Practice: multi-result functions in https://github.com/EmNudge/watlings
 

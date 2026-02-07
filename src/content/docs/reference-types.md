@@ -3,6 +3,7 @@ title: Reference Types
 description: Using funcref and externref, with tables and ref.* instructions.
 ---
 
+
 Reference types let Wasm refer to functions and host objects.
 
 ## Types
@@ -60,6 +61,9 @@ From JS, you can pass host references as `externref` via imports or function par
 
 References:
 
+- [Reference Instructions](/instructions/reference) - Complete reference for `ref.null`, `ref.func`, `ref.is_null`, `ref.as_non_null`
+- [Table Instructions](/instructions/table) - `table.get`, `table.set`, `table.grow`, `table.fill`, etc.
+- [Type Names](/instructions/types) - `funcref`, `externref`, and other reference types
 - Spec: [Reference types and tables](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: function tables in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 

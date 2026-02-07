@@ -3,6 +3,7 @@ title: Types
 description: Understand WAT value types, function signatures, locals, and results.
 ---
 
+
 WAT’s type system is intentionally small. Most modules only need a handful of core types.
 
 ## Value types
@@ -87,6 +88,12 @@ Both branches of an `if` with a result must produce the same typed value(s).
 ```
 
 For the formal grammar of all types, see the [WebAssembly spec — Structure → Types](https://webassembly.github.io/spec/core/syntax/index.html).
+
+## Instruction Reference
+
+For detailed documentation of all type-related constructs:
+- [Type Names](/instructions/types) - All value type keywords (`i32`, `i64`, `f32`, `f64`, `v128`, `funcref`, `externref`, etc.)
+- [Module Structure](/instructions/module) - `func`, `param`, `result`, `local`, `global`, `table`, `memory`
 
 ## Practice
 

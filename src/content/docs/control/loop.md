@@ -3,6 +3,7 @@ title: loop
 description: Repeat a block; branches target the top to continue.
 ---
 
+
 `loop` behaves like a labeled loop. Branching to its label jumps to the top (continue).
 
 ```wat
@@ -40,6 +41,7 @@ Tips:
 
 Further reading:
 
+- [Control Flow Instructions](/instructions/control) - Complete reference for `block`, `loop`, `if`, `br`, `br_if`, etc.
 - Spec: [Control instructions](https://webassembly.github.io/spec/core/syntax/index.html)
 - Practice: related repetitions in [watlings](https://github.com/EmNudge/watlings/tree/main/exercises)
 
