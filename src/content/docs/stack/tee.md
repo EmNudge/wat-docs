@@ -1,11 +1,9 @@
 ---
-title: tee (local.tee / global.tee)
-description: Store a value and keep it on the stack.
+title: local.tee
+description: Store a value into a local and keep it on the stack.
 ---
 
-`tee` variants write to a variable and also leave the value on the stack for further use.
-
-## local.tee
+`local.tee` writes to a local variable and also leaves the value on the stack for further use.
 
 ```wat
 (module
@@ -18,14 +16,17 @@ description: Store a value and keep it on the stack.
 )
 ```
 
-## global.tee
+There is no `global.tee` instruction. To set a global and keep the value on the stack, use `local.tee` into a temporary local and then `global.set`:
 
 ```wat
 (module
   (global $g (mut i32) (i32.const 0))
   (func (param $x i32) (result i32)
+    (local $tmp i32)
     local.get $x
-    global.tee $g      ;; store into global $g, keep value on stack
+    local.tee $tmp     ;; keep value on stack
+    global.set $g      ;; store copy into global $g (pops)
+    local.get $tmp     ;; push value back for further use
     i32.const 2
     i32.mul)
 )

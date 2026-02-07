@@ -9,7 +9,7 @@ Declares a WebAssembly module. Top-level container for all declarations.
 
 **Example:**
 
-```wat
+```wat-snippet
 (module $my_module
   ;; Module contents here
   (func ...)
@@ -202,7 +202,7 @@ Declares a function to be called automatically when the module is instantiated.
 
 **Example:**
 
-```wat
+```wat-snippet
 (module
   (func $init
     ;; Initialization code here

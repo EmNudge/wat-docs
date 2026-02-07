@@ -18,7 +18,9 @@ Hex and floats:
 (module
   (func
     i32.const 0xFF
-    f64.const 3.14159)
+    drop
+    f64.const 3.14159
+    drop)
 )
 ```
 

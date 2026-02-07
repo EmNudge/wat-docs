@@ -37,7 +37,10 @@ export default defineConfig({
       },
       expressiveCode: {
         shiki: {
-          langs: [{ ...watGrammar, name: 'wat', aliases: ['wast'] }],
+          langs: [
+            { ...watGrammar, name: 'wat', aliases: ['wast'] },
+            { ...watGrammar, name: 'wat-snippet', aliases: [] },
+          ],
         },
       },
       sidebar: [
@@ -69,7 +72,7 @@ export default defineConfig({
           items: [
             { label: 'Parametric', slug: 'stack/parametric' },
             { label: 'drop', slug: 'stack/drop' },
-            { label: 'tee', slug: 'stack/tee' },
+            { label: 'local.tee', slug: 'stack/tee' },
             { label: 'Memory & Data', slug: 'stack/memory-data' },
             { label: 'Traps', slug: 'stack/traps' },
           ],
