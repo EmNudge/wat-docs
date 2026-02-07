@@ -356,7 +356,7 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
 
   if (lines.length > 0) {
     code = Array.from(lines)
-      .map((line) => line.textContent || '')
+      .map((line) => (line.textContent || '').replace(/^\n+|\n+$/g, ''))
       .join('\n');
   } else {
     // Fallback: use code element
@@ -376,7 +376,7 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
   container.style.cssText = `
     height: ${height}px;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: auto;
     margin-block: 1rem;
   `;
 

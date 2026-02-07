@@ -474,7 +474,7 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
 
   if (lines.length > 0) {
     code = Array.from(lines)
-      .map((line) => line.textContent || '')
+      .map((line) => (line.textContent || '').replace(/^\n+|\n+$/g, ''))
       .join('\n');
   } else {
     const codeEl = wrapper.querySelector('code');
@@ -490,7 +490,7 @@ async function enhanceCodeBlock(wrapper: HTMLElement) {
     max-height: 400px;
     min-height: 120px;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: auto;
     margin-block: 1rem;
   `;
 
