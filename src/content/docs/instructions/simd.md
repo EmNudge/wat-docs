@@ -1856,3 +1856,2369 @@ Relaxed dot product of i8x16 and i7x16 vectors with i32x4 accumulation. Multipli
 ```
 
 ---
+
+## i8x16.sub
+
+Lane-wise subtraction of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.sub (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.neg
+
+Lane-wise negation of an i8x16 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.neg (local.get $a))
+```
+
+---
+
+## i8x16.min_s
+
+Lane-wise signed minimum of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.min_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.min_u
+
+Lane-wise unsigned minimum of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.min_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.max_s
+
+Lane-wise signed maximum of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.max_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.max_u
+
+Lane-wise unsigned maximum of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.max_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.avgr_u
+
+Lane-wise unsigned rounding average of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.avgr_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.abs
+
+Lane-wise absolute value of an i8x16 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.abs (local.get $a))
+```
+
+---
+
+## i8x16.popcnt
+
+Lane-wise population count (number of set bits) of an i8x16 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.popcnt (local.get $a))
+```
+
+---
+
+## i8x16.all_true
+
+Returns 1 if all lanes are non-zero, 0 otherwise.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.all_true (local.get $a))
+```
+
+---
+
+## i8x16.bitmask
+
+Extract the high bit of each lane as an i32 bitmask.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.bitmask (local.get $a))
+```
+
+---
+
+## i8x16.narrow_i16x8_s
+
+Narrow two i16x8 vectors to i8x16 with signed saturation.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.narrow_i16x8_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.narrow_i16x8_u
+
+Narrow two i16x8 vectors to i8x16 with unsigned saturation.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.narrow_i16x8_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.add_sat_s
+
+Lane-wise saturating signed addition of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.add_sat_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.add_sat_u
+
+Lane-wise saturating unsigned addition of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.add_sat_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.sub_sat_s
+
+Lane-wise saturating signed subtraction of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.sub_sat_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.sub_sat_u
+
+Lane-wise saturating unsigned subtraction of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.sub_sat_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.sub
+
+Lane-wise subtraction of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.sub (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.neg
+
+Lane-wise negation of an i16x8 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.neg (local.get $a))
+```
+
+---
+
+## i16x8.mul
+
+Lane-wise multiplication of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.mul (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.min_s
+
+Lane-wise signed minimum of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.min_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.min_u
+
+Lane-wise unsigned minimum of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.min_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.max_s
+
+Lane-wise signed maximum of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.max_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.max_u
+
+Lane-wise unsigned maximum of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.max_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.avgr_u
+
+Lane-wise unsigned rounding average of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.avgr_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.abs
+
+Lane-wise absolute value of an i16x8 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.abs (local.get $a))
+```
+
+---
+
+## i16x8.all_true
+
+Returns 1 if all lanes are non-zero, 0 otherwise.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.all_true (local.get $a))
+```
+
+---
+
+## i16x8.bitmask
+
+Extract the high bit of each lane as an i32 bitmask.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.bitmask (local.get $a))
+```
+
+---
+
+## i16x8.narrow_i32x4_s
+
+Narrow two i32x4 vectors to i16x8 with signed saturation.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.narrow_i32x4_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.narrow_i32x4_u
+
+Narrow two i32x4 vectors to i16x8 with unsigned saturation.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.narrow_i32x4_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.add_sat_s
+
+Lane-wise saturating signed addition of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.add_sat_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.add_sat_u
+
+Lane-wise saturating unsigned addition of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.add_sat_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.sub_sat_s
+
+Lane-wise saturating signed subtraction of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.sub_sat_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.sub_sat_u
+
+Lane-wise saturating unsigned subtraction of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.sub_sat_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.extend_low_i8x16_s
+
+Widen the low 8 lanes of an i8x16 vector to i16x8 with sign extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extend_low_i8x16_s (local.get $a))
+```
+
+---
+
+## i16x8.extend_low_i8x16_u
+
+Widen the low 8 lanes of an i8x16 vector to i16x8 with zero extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extend_low_i8x16_u (local.get $a))
+```
+
+---
+
+## i16x8.extend_high_i8x16_s
+
+Widen the high 8 lanes of an i8x16 vector to i16x8 with sign extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extend_high_i8x16_s (local.get $a))
+```
+
+---
+
+## i16x8.extend_high_i8x16_u
+
+Widen the high 8 lanes of an i8x16 vector to i16x8 with zero extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extend_high_i8x16_u (local.get $a))
+```
+
+---
+
+## i16x8.extmul_low_i8x16_s
+
+Extended multiply: multiply low 8 lanes of two i8x16 vectors and widen to i16x8 (signed).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extmul_low_i8x16_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.extmul_low_i8x16_u
+
+Extended multiply: multiply low 8 lanes of two i8x16 vectors and widen to i16x8 (unsigned).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extmul_low_i8x16_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.extmul_high_i8x16_s
+
+Extended multiply: multiply high 8 lanes of two i8x16 vectors and widen to i16x8 (signed).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extmul_high_i8x16_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.extmul_high_i8x16_u
+
+Extended multiply: multiply high 8 lanes of two i8x16 vectors and widen to i16x8 (unsigned).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extmul_high_i8x16_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.extadd_pairwise_i8x16_s
+
+Pairwise add adjacent i8x16 lanes and widen to i16x8 (signed).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extadd_pairwise_i8x16_s (local.get $a))
+```
+
+---
+
+## i16x8.extadd_pairwise_i8x16_u
+
+Pairwise add adjacent i8x16 lanes and widen to i16x8 (unsigned).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.extadd_pairwise_i8x16_u (local.get $a))
+```
+
+---
+
+## i16x8.q15mulr_sat_s
+
+Q15 fixed-point saturating rounding multiply of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.q15mulr_sat_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.sub
+
+Lane-wise subtraction of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.sub (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.neg
+
+Lane-wise negation of an i32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.neg (local.get $a))
+```
+
+---
+
+## i32x4.mul
+
+Lane-wise multiplication of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.mul (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.min_s
+
+Lane-wise signed minimum of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.min_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.min_u
+
+Lane-wise unsigned minimum of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.min_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.max_s
+
+Lane-wise signed maximum of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.max_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.max_u
+
+Lane-wise unsigned maximum of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.max_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.abs
+
+Lane-wise absolute value of an i32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.abs (local.get $a))
+```
+
+---
+
+## i32x4.all_true
+
+Returns 1 if all lanes are non-zero, 0 otherwise.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.all_true (local.get $a))
+```
+
+---
+
+## i32x4.bitmask
+
+Extract the high bit of each lane as an i32 bitmask.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.bitmask (local.get $a))
+```
+
+---
+
+## i32x4.extend_low_i16x8_s
+
+Widen the low 4 lanes of an i16x8 vector to i32x4 with sign extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extend_low_i16x8_s (local.get $a))
+```
+
+---
+
+## i32x4.extend_low_i16x8_u
+
+Widen the low 4 lanes of an i16x8 vector to i32x4 with zero extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extend_low_i16x8_u (local.get $a))
+```
+
+---
+
+## i32x4.extend_high_i16x8_s
+
+Widen the high 4 lanes of an i16x8 vector to i32x4 with sign extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extend_high_i16x8_s (local.get $a))
+```
+
+---
+
+## i32x4.extend_high_i16x8_u
+
+Widen the high 4 lanes of an i16x8 vector to i32x4 with zero extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extend_high_i16x8_u (local.get $a))
+```
+
+---
+
+## i32x4.extmul_low_i16x8_s
+
+Extended multiply: multiply low 4 lanes of two i16x8 vectors and widen to i32x4 (signed).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extmul_low_i16x8_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.extmul_low_i16x8_u
+
+Extended multiply: multiply low 4 lanes of two i16x8 vectors and widen to i32x4 (unsigned).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extmul_low_i16x8_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.extmul_high_i16x8_s
+
+Extended multiply: multiply high 4 lanes of two i16x8 vectors and widen to i32x4 (signed).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extmul_high_i16x8_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.extmul_high_i16x8_u
+
+Extended multiply: multiply high 4 lanes of two i16x8 vectors and widen to i32x4 (unsigned).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extmul_high_i16x8_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.extadd_pairwise_i16x8_s
+
+Pairwise add adjacent i16x8 lanes and widen to i32x4 (signed).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extadd_pairwise_i16x8_s (local.get $a))
+```
+
+---
+
+## i32x4.extadd_pairwise_i16x8_u
+
+Pairwise add adjacent i16x8 lanes and widen to i32x4 (unsigned).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.extadd_pairwise_i16x8_u (local.get $a))
+```
+
+---
+
+## i32x4.dot_i16x8_s
+
+Dot product: multiply pairs of i16x8 lanes and sum adjacent products to i32x4.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.dot_i16x8_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.trunc_sat_f32x4_s
+
+Convert f32x4 to i32x4 with signed saturating truncation.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.trunc_sat_f32x4_s (local.get $a))
+```
+
+---
+
+## i32x4.trunc_sat_f32x4_u
+
+Convert f32x4 to i32x4 with unsigned saturating truncation.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.trunc_sat_f32x4_u (local.get $a))
+```
+
+---
+
+## i32x4.trunc_sat_f64x2_s_zero
+
+Convert f64x2 to i32x4 with signed saturating truncation, zero-extending the upper lanes.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.trunc_sat_f64x2_s_zero (local.get $a))
+```
+
+---
+
+## i32x4.trunc_sat_f64x2_u_zero
+
+Convert f64x2 to i32x4 with unsigned saturating truncation, zero-extending the upper lanes.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.trunc_sat_f64x2_u_zero (local.get $a))
+```
+
+---
+
+## i64x2.sub
+
+Lane-wise subtraction of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.sub (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.neg
+
+Lane-wise negation of an i64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.neg (local.get $a))
+```
+
+---
+
+## i64x2.mul
+
+Lane-wise multiplication of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.mul (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.abs
+
+Lane-wise absolute value of an i64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.abs (local.get $a))
+```
+
+---
+
+## i64x2.all_true
+
+Returns 1 if all lanes are non-zero, 0 otherwise.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.all_true (local.get $a))
+```
+
+---
+
+## i64x2.bitmask
+
+Extract the high bit of each lane as an i32 bitmask.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.bitmask (local.get $a))
+```
+
+---
+
+## i64x2.extend_low_i32x4_s
+
+Widen the low 2 lanes of an i32x4 vector to i64x2 with sign extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extend_low_i32x4_s (local.get $a))
+```
+
+---
+
+## i64x2.extend_low_i32x4_u
+
+Widen the low 2 lanes of an i32x4 vector to i64x2 with zero extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extend_low_i32x4_u (local.get $a))
+```
+
+---
+
+## i64x2.extend_high_i32x4_s
+
+Widen the high 2 lanes of an i32x4 vector to i64x2 with sign extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extend_high_i32x4_s (local.get $a))
+```
+
+---
+
+## i64x2.extend_high_i32x4_u
+
+Widen the high 2 lanes of an i32x4 vector to i64x2 with zero extension.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extend_high_i32x4_u (local.get $a))
+```
+
+---
+
+## i64x2.extmul_low_i32x4_s
+
+Extended multiply: multiply low 2 lanes of two i32x4 vectors and widen to i64x2 (signed).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extmul_low_i32x4_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.extmul_low_i32x4_u
+
+Extended multiply: multiply low 2 lanes of two i32x4 vectors and widen to i64x2 (unsigned).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extmul_low_i32x4_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.extmul_high_i32x4_s
+
+Extended multiply: multiply high 2 lanes of two i32x4 vectors and widen to i64x2 (signed).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extmul_high_i32x4_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.extmul_high_i32x4_u
+
+Extended multiply: multiply high 2 lanes of two i32x4 vectors and widen to i64x2 (unsigned).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.extmul_high_i32x4_u (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.sub
+
+Lane-wise subtraction of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.sub (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.mul
+
+Lane-wise multiplication of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.mul (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.div
+
+Lane-wise division of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.div (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.neg
+
+Lane-wise negation of an f32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.neg (local.get $a))
+```
+
+---
+
+## f32x4.abs
+
+Lane-wise absolute value of an f32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.abs (local.get $a))
+```
+
+---
+
+## f32x4.sqrt
+
+Lane-wise square root of an f32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.sqrt (local.get $a))
+```
+
+---
+
+## f32x4.min
+
+Lane-wise minimum of two f32x4 vectors (IEEE 754 semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.min (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.max
+
+Lane-wise maximum of two f32x4 vectors (IEEE 754 semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.max (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.pmin
+
+Lane-wise pseudo-minimum of two f32x4 vectors (C-like semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.pmin (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.pmax
+
+Lane-wise pseudo-maximum of two f32x4 vectors (C-like semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.pmax (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.ceil
+
+Lane-wise ceiling (round toward positive infinity) of an f32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.ceil (local.get $a))
+```
+
+---
+
+## f32x4.floor
+
+Lane-wise floor (round toward negative infinity) of an f32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.floor (local.get $a))
+```
+
+---
+
+## f32x4.trunc
+
+Lane-wise truncation (round toward zero) of an f32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.trunc (local.get $a))
+```
+
+---
+
+## f32x4.nearest
+
+Lane-wise rounding to nearest integer (ties to even) of an f32x4 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.nearest (local.get $a))
+```
+
+---
+
+## f32x4.convert_i32x4_s
+
+Convert i32x4 to f32x4 (signed).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.convert_i32x4_s (local.get $a))
+```
+
+---
+
+## f32x4.convert_i32x4_u
+
+Convert i32x4 to f32x4 (unsigned).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.convert_i32x4_u (local.get $a))
+```
+
+---
+
+## f32x4.demote_f64x2_zero
+
+Demote f64x2 to f32x4, zero-extending the upper lanes.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.demote_f64x2_zero (local.get $a))
+```
+
+---
+
+## f64x2.sub
+
+Lane-wise subtraction of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.sub (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.mul
+
+Lane-wise multiplication of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.mul (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.div
+
+Lane-wise division of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.div (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.neg
+
+Lane-wise negation of an f64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.neg (local.get $a))
+```
+
+---
+
+## f64x2.abs
+
+Lane-wise absolute value of an f64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.abs (local.get $a))
+```
+
+---
+
+## f64x2.sqrt
+
+Lane-wise square root of an f64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.sqrt (local.get $a))
+```
+
+---
+
+## f64x2.min
+
+Lane-wise minimum of two f64x2 vectors (IEEE 754 semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.min (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.max
+
+Lane-wise maximum of two f64x2 vectors (IEEE 754 semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.max (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.pmin
+
+Lane-wise pseudo-minimum of two f64x2 vectors (C-like semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.pmin (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.pmax
+
+Lane-wise pseudo-maximum of two f64x2 vectors (C-like semantics).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.pmax (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.ceil
+
+Lane-wise ceiling (round toward positive infinity) of an f64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.ceil (local.get $a))
+```
+
+---
+
+## f64x2.floor
+
+Lane-wise floor (round toward negative infinity) of an f64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.floor (local.get $a))
+```
+
+---
+
+## f64x2.trunc
+
+Lane-wise truncation (round toward zero) of an f64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.trunc (local.get $a))
+```
+
+---
+
+## f64x2.nearest
+
+Lane-wise rounding to nearest integer (ties to even) of an f64x2 vector.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.nearest (local.get $a))
+```
+
+---
+
+## f64x2.convert_low_i32x4_s
+
+Convert the low 2 lanes of i32x4 to f64x2 (signed).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.convert_low_i32x4_s (local.get $a))
+```
+
+---
+
+## f64x2.convert_low_i32x4_u
+
+Convert the low 2 lanes of i32x4 to f64x2 (unsigned).
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.convert_low_i32x4_u (local.get $a))
+```
+
+---
+
+## f64x2.promote_low_f32x4
+
+Promote the low 2 lanes of f32x4 to f64x2.
+
+**Signature:** `(param v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.promote_low_f32x4 (local.get $a))
+```
+
+---
+
+## v128.andnot
+
+Bitwise AND NOT of two v128 vectors (a AND (NOT b)).
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(v128.andnot (local.get $a) (local.get $b))
+```
+
+---
+
+## v128.bitselect
+
+Bitwise select from two v128 vectors based on a mask.
+
+**Signature:** `(param v128 v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(v128.bitselect (local.get $a) (local.get $b) (local.get $mask))
+```
+
+---
+
+## v128.any_true
+
+Returns 1 if any bit in the v128 vector is set, 0 otherwise.
+
+**Signature:** `(param v128) (result i32)`
+
+**Example:**
+
+```wat-snippet
+(v128.any_true (local.get $a))
+```
+
+---
+
+## i8x16.eq
+
+Lane-wise equality comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.eq (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.ne
+
+Lane-wise inequality comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.ne (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.lt_s
+
+Lane-wise signed less-than comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.lt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.lt_u
+
+Lane-wise unsigned less-than comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.lt_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.gt_s
+
+Lane-wise signed greater-than comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.gt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.gt_u
+
+Lane-wise unsigned greater-than comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.gt_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.le_s
+
+Lane-wise signed less-than-or-equal comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.le_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.le_u
+
+Lane-wise unsigned less-than-or-equal comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.le_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.ge_s
+
+Lane-wise signed greater-than-or-equal comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.ge_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i8x16.ge_u
+
+Lane-wise unsigned greater-than-or-equal comparison of two i8x16 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i8x16.ge_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.eq
+
+Lane-wise equality comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.eq (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.ne
+
+Lane-wise inequality comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.ne (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.lt_s
+
+Lane-wise signed less-than comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.lt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.lt_u
+
+Lane-wise unsigned less-than comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.lt_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.gt_s
+
+Lane-wise signed greater-than comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.gt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.gt_u
+
+Lane-wise unsigned greater-than comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.gt_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.le_s
+
+Lane-wise signed less-than-or-equal comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.le_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.le_u
+
+Lane-wise unsigned less-than-or-equal comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.le_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.ge_s
+
+Lane-wise signed greater-than-or-equal comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.ge_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i16x8.ge_u
+
+Lane-wise unsigned greater-than-or-equal comparison of two i16x8 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i16x8.ge_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.eq
+
+Lane-wise equality comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.eq (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.ne
+
+Lane-wise inequality comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.ne (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.lt_s
+
+Lane-wise signed less-than comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.lt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.lt_u
+
+Lane-wise unsigned less-than comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.lt_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.gt_s
+
+Lane-wise signed greater-than comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.gt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.gt_u
+
+Lane-wise unsigned greater-than comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.gt_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.le_s
+
+Lane-wise signed less-than-or-equal comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.le_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.le_u
+
+Lane-wise unsigned less-than-or-equal comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.le_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.ge_s
+
+Lane-wise signed greater-than-or-equal comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.ge_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i32x4.ge_u
+
+Lane-wise unsigned greater-than-or-equal comparison of two i32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i32x4.ge_u (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.eq
+
+Lane-wise equality comparison of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.eq (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.ne
+
+Lane-wise inequality comparison of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.ne (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.lt_s
+
+Lane-wise signed less-than comparison of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.lt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.gt_s
+
+Lane-wise signed greater-than comparison of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.gt_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.le_s
+
+Lane-wise signed less-than-or-equal comparison of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.le_s (local.get $a) (local.get $b))
+```
+
+---
+
+## i64x2.ge_s
+
+Lane-wise signed greater-than-or-equal comparison of two i64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(i64x2.ge_s (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.eq
+
+Lane-wise equality comparison of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.eq (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.ne
+
+Lane-wise inequality comparison of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.ne (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.lt
+
+Lane-wise less-than comparison of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.lt (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.gt
+
+Lane-wise greater-than comparison of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.gt (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.le
+
+Lane-wise less-than-or-equal comparison of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.le (local.get $a) (local.get $b))
+```
+
+---
+
+## f32x4.ge
+
+Lane-wise greater-than-or-equal comparison of two f32x4 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f32x4.ge (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.eq
+
+Lane-wise equality comparison of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.eq (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.ne
+
+Lane-wise inequality comparison of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.ne (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.lt
+
+Lane-wise less-than comparison of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.lt (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.gt
+
+Lane-wise greater-than comparison of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.gt (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.le
+
+Lane-wise less-than-or-equal comparison of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.le (local.get $a) (local.get $b))
+```
+
+---
+
+## f64x2.ge
+
+Lane-wise greater-than-or-equal comparison of two f64x2 vectors.
+
+**Signature:** `(param v128 v128) (result v128)`
+
+**Example:**
+
+```wat-snippet
+(f64x2.ge (local.get $a) (local.get $b))
+```
+
+---

@@ -338,3 +338,27 @@ Branch to a label if the reference is not null. The non-null reference is passed
 ```
 
 ---
+
+## return_call_indirect
+
+Tail-call version of `call_indirect`. Calls a function from a table by index and returns its result directly, reusing the current call frame. The type must match the target function. This enables constant-space mutual recursion through tables.
+
+**Signature:** `(param args... i32) (result T)`
+
+**Example:**
+
+```wat-snippet
+(module
+  (type $sig (func (param i32) (result i32)))
+  (table 1 funcref)
+  (elem (i32.const 0) $ping)
+  (func $ping (type $sig) (param $n i32) (result i32)
+    (if (result i32) (i32.eqz (local.get $n))
+      (then (i32.const 0))
+      (else (return_call_indirect (type $sig)
+        (i32.sub (local.get $n) (i32.const 1))
+        (i32.const 0)))))
+)
+```
+
+---
