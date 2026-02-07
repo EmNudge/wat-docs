@@ -3031,7 +3031,7 @@ Declares a WebAssembly module. Top-level container for all declarations.
 
 Example:
 
-```wat
+```wat-snippet
 (module $my_module
   ;; Module contents here
   (func ...)
@@ -3224,7 +3224,7 @@ Declares a function to be called automatically when the module is instantiated.
 
 Example:
 
-```wat
+```wat-snippet
 (module
   (func $init
     ;; Initialization code here
@@ -3241,6 +3241,14 @@ Example:
 ## type
 
 Declares a function type that can be referenced elsewhere.
+
+A **typeuse** is a reference to a function type that can appear in `func`, `call_indirect`, `return_call_indirect`, and block types. It can be written three ways:
+
+- **Explicit type reference only** — params/results come from the referenced type
+- **Inline params/results only** — a matching type is implicitly created or reused
+- **Both** — the inline params/results must match the referenced type
+
+Form 3 is useful when you need both a type index (for `call_indirect`) and named parameters.
 
 Example:
 
@@ -3648,6 +3656,35 @@ Example:
 
 ```wat
 (global $no_extern nullexternref (ref.null noextern))
+```
+
+---
+
+## exnref
+
+Reference type for exception objects (exception handling proposal). Equivalent to `(ref null exn)`.
+
+Example:
+
+```wat
+(block $handler (result exnref)
+  (try_table (catch_all_ref $handler)
+    (call $may_throw)
+    (unreachable)
+  )
+)
+```
+
+---
+
+## nullexnref
+
+Null reference type for exceptions (exception handling proposal). Equivalent to `(ref null noexn)`.
+
+Example:
+
+```wat
+(global $no_exn nullexnref (ref.null noexn))
 ```
 
 ---

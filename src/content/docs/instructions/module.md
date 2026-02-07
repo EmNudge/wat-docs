@@ -220,6 +220,14 @@ Declares a function to be called automatically when the module is instantiated.
 
 Declares a function type that can be referenced elsewhere.
 
+A **typeuse** is a reference to a function type that can appear in `func`, `call_indirect`, `return_call_indirect`, and block types. It can be written three ways:
+
+- **Explicit type reference only** — params/results come from the referenced type
+- **Inline params/results only** — a matching type is implicitly created or reused
+- **Both** — the inline params/results must match the referenced type
+
+Form 3 is useful when you need both a type index (for `call_indirect`) and named parameters.
+
 **Example:**
 
 ```wat

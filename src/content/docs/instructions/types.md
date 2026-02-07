@@ -270,6 +270,35 @@ Null reference type for external values (GC proposal). Equivalent to `(ref null 
 
 ---
 
+## exnref
+
+Reference type for exception objects (exception handling proposal). Equivalent to `(ref null exn)`.
+
+**Example:**
+
+```wat
+(block $handler (result exnref)
+  (try_table (catch_all_ref $handler)
+    (call $may_throw)
+    (unreachable)
+  )
+)
+```
+
+---
+
+## nullexnref
+
+Null reference type for exceptions (exception handling proposal). Equivalent to `(ref null noexn)`.
+
+**Example:**
+
+```wat
+(global $no_exn nullexnref (ref.null noexn))
+```
+
+---
+
 ## i8
 
 8-bit integer storage type for packed struct fields and arrays (GC proposal). Not a value type - values are widened to i32 when accessed.
